@@ -43,7 +43,7 @@ export default function Navbar() {
       }`;
 
   // Clases de botón compartidas: Redujimos la altura (h-9) y el texto (text-xs) para móviles
-  const buttonBaseClasses = "rounded-lg font-medium transition-colors h-9 md:h-10 flex items-center justify-center text-xs md:text-sm px-3 md:px-5";
+  const buttonBaseClasses = "cursor-pointer rounded-lg font-medium transition-colors h-10 md:h-12 flex items-center justify-center text-xs md:text-sm px-3 md:px-5";
   const blueButtonClasses = `${buttonBaseClasses} bg-[#0f6fff] hover:bg-blue-700 text-white`;
   const outlineButtonClasses = `${buttonBaseClasses} border border-slate-200 text-slate-700 hover:bg-slate-50`;
 
@@ -53,7 +53,7 @@ export default function Navbar() {
       <nav className="w-full flex justify-between items-center px-4 md:px-8 py-3 md:py-4 max-w-7xl mx-auto">
         
         <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="Inicio">
-          <div className="h-7 w-28 md:h-9 md:w-36 bg-[url('/logo.png')] bg-contain bg-no-repeat bg-left" />
+          <div className="h-10 w-28 md:h-14 md:w-42 bg-[url('/logo.png')] bg-contain bg-no-repeat bg-left" />
           <span className="sr-only">Ferreteros.app</span>
         </Link>
         
@@ -62,11 +62,11 @@ export default function Navbar() {
             href="/#servicios" 
             className="hidden md:block text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
           >
-            Servicios
+            Recursos 🎁
           </Link>
           
           {/* BOTÓN ACTUALIZADO PARA MODAL Y DISEÑO DE KLEO */}
-          <button onClick={() => openModal()} className={blueButtonClasses}>Unirse a Waitlist</button>
+          <button onClick={() => openModal()} className={blueButtonClasses}>Obtener acceso</button>
         </div>
       </nav>
     </header>

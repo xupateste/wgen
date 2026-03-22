@@ -94,30 +94,28 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                   </div>
                   <h2 className="text-2xl font-extrabold text-slate-900 mb-3 tracking-tight">¡Lugar Asegurado!</h2>
                   <p className="text-slate-500 mb-6 text-sm leading-relaxed">Tus datos están a salvo.<br/>Nuestro equipo está revisando tu perfil.</p>
-                  <div className="bg-slate-50/80 p-5 rounded-2xl text-sm text-slate-600 text-left border border-slate-100 shadow-inner mb-6">
+                  <div className="bg-slate-50/80 p-5 rounded-2xl text-sm text-slate-600 text-left border border-slate-300 shadow-inner mb-6">
                     <span className="flex items-center gap-2 font-semibold text-slate-900 mb-1">
                       <Zap size={16} className="text-blue-500" /> Próximo paso
                     </span>
                     Te contactaremos vía WhatsApp muy pronto para habilitar tu acceso.
                   </div>
                   <div className="flex flex-col gap-3">
-                    <button onClick={closeModal} className="w-full bg-slate-100 border-1 hover:bg-slate-200 text-slate-700 font-semibold py-3.5 rounded-xl transition-colors">
+                    <button onClick={closeModal} className="w-full cursor-pointer bg-slate-100 border-1 hover:bg-slate-200 text-slate-700 font-semibold py-3.5 rounded-xl transition-colors">
                       Volver a la página
                     </button>
-                    <button onClick={() => setAlreadyRegistered(false)} className="text-slate-400 hover:text-blue-600 text-sm font-medium transition-colors py-2">
-                      ¿Te equivocaste en algún dato? Modificar registro
+                    <button onClick={() => setAlreadyRegistered(false)} className="cursor-pointer text-slate-400 hover:text-blue-600 text-sm font-medium transition-colors py-2">
+                      ¿Te equivocaste en algún dato? <br/> Modificar registro
                     </button>
                   </div>
                 </div>
               ) : (
                 <div className="animate-in fade-in duration-300">
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold tracking-wide uppercase mb-6">
-                    <Zap size={14} fill="currentColor" /> Acceso Anticipado
-                  </div>
-                  <h2 className="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">Únete a Genio</h2>
-                  <p className="text-slate-500 text-sm mb-8 leading-relaxed">
-                    {promptData ? <span className="text-blue-600 font-medium">Consulta capturada. </span> : ""}
-                    Déjanos tus datos para ser de los primeros en automatizar tu inventario.
+                  <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-4 tracking-tight">
+                    Sé el primero
+                  </h2>
+                  <p className="text-slate-500 text-lg mb-8 leading-relaxed max-w-md mx-auto">
+                    Recibe una notificación cuando lancemos la herramienta oficial este 2026.
                   </p>
                   
                   <form onSubmit={handleModalSubmit} className="flex flex-col gap-5 text-left">

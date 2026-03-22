@@ -151,18 +151,18 @@ export default function Home() {
         
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-blue-100 bg-blue-50/50 text-blue-600 text-[11px] font-bold tracking-widest uppercase mb-6 shadow-sm">
           {/*<Zap size={14} fill="currentColor" />*/}
-          <span>#1 SERVICIO DE INTELIGENCIA FERRETERA</span>
+          <span>#1 EN OPTIMIZACIÓN DE INVENTARIOS</span>
         </div>
 
         {/* Cambiamos font-extrabold a font-bold, y text-[64px] a text-[56px] para mayor elegancia */}
-        <h1 className="text-4xl md:text-[56px] tracking-tight text-slate-900 mb-5 leading-[1.15] md:leading-[1.1]">
-          Tu ferretería en piloto automático. <br className="hidden md:block" />
-          <span className="text-blue-600">Sin improvisar tareas.</span>
+        <h1 className="text-4xl md:text-[56px] tracking-tight font-semibold text-slate-900 mb-5 leading-[1.15] md:leading-[1.1]">
+          Elimina el trabajo manual del inventario {' '}
+          <span className="text-blue-600">de tu ferretería.</span>
         </h1>
 
         {/* Margen mb-8 (antes 12) y quitamos font-medium para aligerar la lectura */}
-        <p className="text-slate-500 text-base md:text-lg mb-8 max-w-2xl px-2 leading-relaxed">
-          Deja de ser el cuello de botella de tu propio negocio. <strong>Genio</strong> transforma tu data en hojas de ruta diarias para tu equipo y planes de compra exactos.
+        <p className="text-slate-500 text-base md:text-lg mb-8 max-w-2xl font-semibold px-2 leading-relaxed">
+          Genio te ayuda a <strong>planificar</strong>, <strong>auditar</strong>, <strong>optimizar</strong> y <strong>dirigir</strong> tu ferretería en un solo lugar. Sin hojas de cálculo y sin improvisar tareas diarias.
         </p>
 
         {/* Borde del chatbox a 1px (border normal) para que sea definido pero no tosco */}
@@ -199,45 +199,45 @@ export default function Home() {
           {/* CHIP 1: Operaciones/Equipo (Pain: Improvisación de tareas) */}
           <button 
             onClick={() => openModal("Generar hoja de ruta y tareas diarias para mi equipo de ventas")} 
-            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-2 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
+            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-0 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
           >
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <Users size={16} strokeWidth={2.5} />
             </div>
-            <span>¿Qué debe hacer mi equipo hoy?</span>
+            <span>Tareas diarias</span>
           </button>
 
           {/* CHIP 2: Inventario (Pain: Comprar por intuición / Stock muerto) */}
           <button 
             onClick={() => openModal("Analizar productos sin rotación en los últimos 90 días y sugerir liquidación")} 
-            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-2 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
+            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-0 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
           >
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <PackageSearch size={16} strokeWidth={2.5} />
             </div>
-            <span>Detectar omisiones y fugas de ventas</span>
+            <span>Auditar ventas</span>
           </button>
 
           {/* CHIP 3: Compras (Pain: No saber si reponer u optimizar) */}
           <button 
             onClick={() => openModal("Armar un plan de compras optimizado basado en velocidad de venta real")} 
-            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-2 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
+            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-0 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
           >
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <ShoppingCart size={16} strokeWidth={2.5} />
             </div>
-            <span>Optimizar plan de compras</span>
+            <span>Planear compras</span>
           </button>
 
           {/* CHIP 4: Finanzas (Pain: No saber si el negocio es rentable) */}
           <button 
             onClick={() => openModal("Analizar rentabilidad real y retorno de inversión por categorías")} 
-            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-2 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
+            className="cursor-pointer px-2 md:px-3 py-1 bg-white border border-slate-200 rounded-xl flex items-center gap-0 shadow-sm hover:bg-slate-50 hover:border-blue-300 transition-all group"
           >
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <BarChart3 size={16} strokeWidth={2.5} />
             </div>
-            <span>¿Mi ferretería es rentable?</span>
+            <span>Analizar rentabilidad</span>
           </button>
         </div>
       </main>
