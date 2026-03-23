@@ -155,18 +155,18 @@ export default function Home() {
         </div>
 
         {/* Cambiamos font-extrabold a font-bold, y text-[64px] a text-[56px] para mayor elegancia */}
-        <h1 className="text-4xl md:text-[56px] tracking-tight font-semibold text-slate-900 mb-5 leading-[1.15] md:leading-[1.1]">
-          Elimina el trabajo manual del inventario {' '}
-          <span className="text-blue-600">de tu ferretería.</span>
+        <h1 className="text-3xl md:text-[56px] tracking-tight font-semibold text-slate-900 mb-5 leading-[1.15] md:leading-[1.1]">
+          Dirigir tu ferretería como un experto {' '}
+          <span className="text-blue-600">nunca fue tan sencillo</span>
         </h1>
 
         {/* Margen mb-8 (antes 12) y quitamos font-medium para aligerar la lectura */}
-        <p className="text-slate-500 text-base md:text-lg mb-8 max-w-2xl font-semibold px-2 leading-relaxed">
-          Genio te ayuda a <strong>planificar</strong>, <strong>auditar</strong>, <strong>optimizar</strong> y <strong>dirigir</strong> tu ferretería en un solo lugar. Sin hojas de cálculo y sin improvisar tareas diarias.
+        <p className="text-slate-500 tracking-tight max-w-[65ch] md:text-lg mb-6 md:mb-8 max-w-2xl font-semibold px-2 leading-relaxed">
+          Genio te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu negocio en un solo lugar. Reabastece a tiempo, siempre. Recupera 20+ horas a la semana de trabajo manual.
         </p>
 
         {/* Borde del chatbox a 1px (border normal) para que sea definido pero no tosco */}
-        <div className="w-full max-w-3xl relative shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-2xl bg-white border-2 border border-slate-700 p-1 mb-6 hover:shadow-[0_8px_30px_rgb(37,99,235,0.12)] hover:border-blue-600 transition-all duration-300">
+        <div className="w-full max-w-3xl relative shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-2xl bg-white border-2 border border-slate-700 p-1 mb-4 md:mb-6 hover:shadow-[0_8px_30px_rgb(37,99,235,0.12)] hover:border-blue-600 transition-all duration-300">
           <form onSubmit={handleSimulatedChat} className="relative flex flex-col">
             <textarea 
               spellCheck="false"
@@ -174,7 +174,7 @@ export default function Home() {
               key={placeholder}
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
-              rows={3}
+              rows={2}
               placeholder={placeholder}
               className="w-full text-slate-900 bg-transparent border-none outline-none px-4 pt-4 pb-12 md:pb-14 text-base md:text-lg resize-none placeholder:text-slate-400 font-semibold"
             />
@@ -204,7 +204,7 @@ export default function Home() {
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <Users size={16} strokeWidth={2.5} />
             </div>
-            <span>Tareas diarias</span>
+            <span>Establecer plan de trabajo</span>
           </button>
 
           {/* CHIP 2: Inventario (Pain: Comprar por intuición / Stock muerto) */}

@@ -137,7 +137,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       </div>
                     </div>
                     <button type="submit" disabled={isSubmitting} className="w-full mt-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:opacity-70 text-white font-semibold py-4 rounded-xl shadow-[0_4px_14px_0_rgb(37,99,235,0.39)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.23)] hover:-translate-y-0.5 transition-all flex justify-center items-center h-14">
-                      {isSubmitting ? <Loader2 className="animate-spin" size={22} /> : "Asegurar mi lugar"}
+                      {isSubmitting ? <Loader2 className="animate-spin" size={22} /> : "Unirme a la lista de espera"}
                     </button>
                   </form>
                 </div>
