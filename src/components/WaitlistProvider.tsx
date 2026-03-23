@@ -2,7 +2,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { X, Loader2, CheckCircle2, Zap } from "lucide-react";
+import { X, Loader2, CheckCircle2, Zap, Brain, Clock, MessageCircle } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { submitWaitlist } from "@/app/actions";
@@ -27,6 +27,8 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
   const [phone, setPhone] = useState<string | undefined>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [alreadyRegistered, setAlreadyRegistered] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("genio_waitlist_status") === "registered") {
@@ -43,6 +45,12 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
   const closeModal = () => {
     setIsOpen(false);
     setTimeout(() => setStep(1), 300); 
+  };
+
+  const getWhatsAppLink = () => {
+    const adminNumber = "51947037116"; // TODO: Reemplaza con tu número de WhatsApp real
+    const message = `¡Hola Ferreteros.app! 👋 Me acabo de unir a la lista de espera de Genio PRO.\n\n*Mis datos:*\n- Nombre: ${submittedName}\n- Correo: ${submittedEmail}\n- WhatsApp: ${phone}\n\nQuisiera más información sobre el lanzamiento.`;
+    return `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
   };
 
   const handleModalSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -62,6 +70,8 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
     setIsSubmitting(false);
     
     if (success) {
+      setSubmittedName(data.nombre); // Guardamos para el link de WA
+      setSubmittedEmail(data.email); // Guardamos para el link de WA
       localStorage.setItem("genio_waitlist_status", "registered");
       setAlreadyRegistered(true);
       setTimeout(() => {
@@ -110,56 +120,96 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                 </button>
                 
                 {alreadyRegistered ? (
-                  <div className="text-center py-6 animate-in fade-in duration-500">
-                    <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-emerald-100">
+                  <div className="text-center py-6 animate-in fade-in zoom-in duration-500 relative z-10">
+                    {/* Icono de Éxito */}
+                    <div className="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-emerald-100 relative">
                       <CheckCircle2 size={40} strokeWidth={2} />
+                      <div className="absolute inset-0 rounded-full bg-emerald-400/20 animate-ping" />
                     </div>
-                    <h2 className="text-2xl font-extrabold text-slate-900 mb-3 tracking-tight">¡Lugar Asegurado!</h2>
-                    <p className="text-slate-500 mb-6 text-sm leading-relaxed">Tus datos están a salvo.<br/>Nuestro equipo está revisando tu perfil.</p>
-                    <div className="bg-slate-50 p-5 rounded-2xl text-sm text-slate-600 text-left border border-slate-100 mb-6">
-                      <span className="flex items-center gap-2 font-semibold text-slate-900 mb-1">
-                        <Zap size={16} className="text-blue-500" /> Próximo paso
+
+                    <h2 className="text-3xl font-serif text-slate-900 mb-3 tracking-tight">
+                      ¡Lugar Asegurado!
+                    </h2>
+                    
+                    <p className="text-slate-500 mb-4 text-sm leading-relaxed max-w-[260px] mx-auto font-medium">
+                      Tus datos están a salvo. Nuestro equipo está revisando tu perfil para darte acceso prioritario.
+                    </p>
+
+                    {/* Caja de Próximo Paso */}
+                    <div className="bg-slate-50 border border-slate-100 p-5 rounded-2xl text-sm text-slate-600 text-left mb-4 shadow-inner">
+                      <span className="flex items-center gap-2 font-bold text-slate-900 mb-2">
+                        <Zap size={16} className="text-blue-600" /> Próximo paso
                       </span>
-                      Te contactaremos vía WhatsApp muy pronto para habilitar tu acceso.
+                      <p className="text-[13px] leading-relaxed">
+                        Te contactaremos vía WhatsApp muy pronto para habilitar tu acceso a <strong>Genio PRO</strong>.
+                      </p>
                     </div>
-                    <div className="flex flex-col gap-3">
-                      <button onClick={closeModal} className="w-full cursor-pointer bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold py-3.5 rounded-xl transition-colors shadow-sm">
+
+                    <div className="flex flex-col gap-2">
+                      <a 
+                        href={getWhatsAppLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-[#25D366] hover:bg-[#20ba56] text-white font-black py-3 rounded-xl transition-all shadow-md active:scale-[0.98] flex items-center justify-center gap-2 uppercase tracking-widest text-[11px]"
+                      >
+                        <MessageCircle size={18} fill="currentColor" />
+                        Continuar por WhatsApp
+                      </a>
+                      <button 
+                        onClick={closeModal} 
+                        className="w-full cursor-pointer bg-slate-900 hover:bg-black text-white font-bold py-2 rounded-xl transition-all shadow-md active:scale-[0.98]"
+                      >
                         Volver a la página
                       </button>
-                      <button onClick={() => setAlreadyRegistered(false)} className="cursor-pointer text-slate-400 hover:text-blue-600 text-sm font-medium transition-colors py-2">
-                        ¿Te equivocaste en algún dato? <br/> Modificar registro
+                      
+                      {/* OPCIÓN: MODIFICAR REGISTRO */}
+                      <button 
+                        onClick={() => {
+                          setAlreadyRegistered(false); // Quitamos el estado de registrado
+                          setStep(2); // Lo mandamos directo al formulario
+                        }}
+                        className="cursor-pointer text-xs text-slate-400 hover:text-blue-600 font-bold transition-colors py-2"
+                      >
+                        ¿Te equivocaste en algún dato? <br/>
+                        <span className="underline decoration-slate-200 hover:decoration-blue-400">Modificar registro</span>
                       </button>
                     </div>
                   </div>
                 ) : step === 1 ? (
                   <div className="py-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-6 tracking-tight leading-tight">
+                    <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-4 tracking-tight leading-tight">
                       De ferreteros,<br/> para ferreteros.
                     </h2>
-                    <p className="text-slate-600 text-[16px] mb-8 leading-relaxed font-medium">
+                    <p className="text-slate-600 text-[16px] mb-4 leading-relaxed font-medium">
                       Deja de ser el cuello de botella de tu propia ferretería. Construimos <strong className="text-blue-600 font-extrabold">Genio</strong> para devolverte la confianza y que dirijas tu negocio como un experto.
                     </p>
                     
-                    <ul className="space-y-3 mb-10 text-left max-w-[280px] mx-auto">
-                      <li className="flex items-start gap-3 text-[14px] text-slate-700 font-semibold">
-                        <span className="text-blue-600 mt-0.5">⚡️</span>
-                        <span>Automatiza tus tareas manuales</span>
+                    <div className="bg-slate-50/80 border border-slate-100 rounded-[20px] p-5 mb-6 space-y-4 shadow-sm">
+                      <li className="flex items-center gap-4 text-[14px] text-slate-700 font-medium">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                          <Zap size={16} strokeWidth={2.5} />
+                        </div>
+                        <span><strong className="text-slate-900">Automatiza</strong> tus tareas manuales</span>
                       </li>
-                      <li className="flex items-start gap-3 text-[14px] text-slate-700 font-semibold">
-                        <span className="text-blue-600 mt-0.5">🧠</span>
-                        <span>Decide con seguridad y sin estrés</span>
+                      <li className="flex items-center gap-4 text-[14px] text-slate-700 font-medium">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                          <Brain size={16} strokeWidth={2.5} />
+                        </div>
+                        <span><strong className="text-slate-900">Decide</strong> con seguridad y sin estrés</span>
                       </li>
-                      <li className="flex items-start gap-3 text-[14px] text-slate-700 font-semibold">
-                        <span className="text-blue-600 mt-0.5">⏳</span>
-                        <span>Recupera 20+ horas a la semana</span>
+                      <li className="flex items-center gap-4 text-[14px] text-slate-700 font-medium">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+                          <Clock size={16} strokeWidth={2.5} />
+                        </div>
+                        <span><strong className="text-slate-900">Recupera</strong> 20+ horas a la semana</span>
                       </li>
-                    </ul>
+                    </div>
 
                     <button 
                       onClick={() => setStep(2)}
                       className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-full shadow-[0_10px_25px_rgba(37,99,235,0.3)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.4)] transition-all active:scale-[0.98] uppercase tracking-widest text-xs flex justify-center items-center gap-2"
                     >
-                      Unirme a la lista de espera <span>→</span>
+                      Quiero obtener acceso <span>→</span>
                     </button>
                     
                     <div className="text-center text-xs text-slate-500 mt-6 font-medium flex items-center justify-center gap-2.5">
@@ -177,10 +227,10 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                   <div className="py-2 animate-in fade-in slide-in-from-right-8 duration-500">
                     <div className="mb-6">
                       <h3 className="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">
-                        Estás casi dentro
+                        Sé el primero
                       </h3>
                       <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                        Para garantizar que cada ferretería obtenga resultados excepcionales, daremos acceso por <strong>grupos limitados</strong> este 2026.
+                        Disponible pronto en 2026.<br/> Regístrate para recibir acceso prioritario y ser notificado apenas abramos las puertas.
                       </p>
                     </div>
                     
