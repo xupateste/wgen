@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Genio | #1 Saas para Ferreterías",
     description: "Reabastece a tiempo, siempre. Recupera tu rentabilidad.",
-    images: ["/og-image.png"],
+    images: ["/logo.png"],
   },
 
   // Iconos
