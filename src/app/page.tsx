@@ -156,7 +156,7 @@ export default function Home() {
         
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-blue-100 bg-blue-50/50 text-blue-600 text-[11px] font-bold tracking-widest uppercase mb-6 shadow-sm">
           {/*<Zap size={14} fill="currentColor" />*/}
-          <span>#1 EN OPTIMIZACIÓN DE INVENTARIOS</span>
+          <span>#1 EN OPTIMIZACIÓN DE FERRETERIAS</span>
         </div>
 
         {/* Cambiamos font-extrabold a font-bold, y text-[64px] a text-[56px] para mayor elegancia */}
@@ -166,8 +166,8 @@ export default function Home() {
         </h1>
 
         {/* Margen mb-8 (antes 12) y quitamos font-medium para aligerar la lectura */}
-        <p className="text-slate-500 tracking-tight max-w-[65ch] md:text-lg mb-6 md:mb-8 max-w-2xl font-semibold px-2 leading-relaxed">
-          Genio te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu negocio en un solo lugar. Reabastece a tiempo, siempre. Recupera 20+ horas a la semana de trabajo manual.
+        <p className="text-slate-500 tracking-tight max-w-[55ch] md:text-lg mb-6 md:mb-8 max-w-2xl font-semibold px-2 leading-relaxed">
+          Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu negocio en un solo lugar. Obtén el respaldo de un <strong>analista experto dedicado</strong> que entiende el rubro.
         </p>
 
         {/* Borde del chatbox a 1px (border normal) para que sea definido pero no tosco */}

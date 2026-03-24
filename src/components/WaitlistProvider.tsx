@@ -2,7 +2,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { X, Loader2, CheckCircle2, Zap, Brain, Clock, MessageCircle } from "lucide-react";
+import { X, Loader2, CheckCircle2, Zap, Brain, Clock, Users, MessageCircle } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { submitWaitlist } from "@/app/actions";
@@ -181,31 +181,42 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                   </div>
                 ) : step === 1 ? (
                   <div className="py-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                    <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-4 tracking-tight leading-tight">
+                    <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-4 tracking-tight leading-tight">
                       De ferreteros,<br/> para ferreteros.
                     </h2>
                     <p className="text-slate-600 text-[16px] mb-4 leading-relaxed font-medium">
-                      Deja de ser el cuello de botella de tu propia ferretería. Construimos <strong className="text-blue-600 font-extrabold">Genio</strong> para devolverte la confianza y que dirijas tu negocio como un experto.
+                      Deja de ser el cuello de botella de tu propia ferretería. Construimos <strong className="text-blue-600 font-extrabold">Genio</strong> <strong className="text-slate-900 font-extrabold">PRO</strong> para devolverte la confianza y que dirijas tu negocio como un experto.
                     </p>
                     
-                    <div className="bg-slate-50/80 border border-slate-100 rounded-[20px] p-5 mb-6 space-y-4 shadow-sm">
-                      <li className="flex items-center gap-4 text-[14px] text-slate-700 font-medium">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-                          <Zap size={16} strokeWidth={2.5} />
-                        </div>
-                        <span><strong className="text-slate-900">Automatiza</strong> tus tareas manuales</span>
-                      </li>
-                      <li className="flex items-center gap-4 text-[14px] text-slate-700 font-medium">
+                    <div className="bg-slate-50/80 border border-slate-100 rounded-[24px] p-5 mb-6 space-y-4 shadow-sm">
+                      {/* BENEFICIO 1: EL SOFTWARE (LA IA) */}
+                      <li className="flex items-start gap-4 text-[14px] text-slate-700 font-medium">
                         <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
                           <Brain size={16} strokeWidth={2.5} />
                         </div>
-                        <span><strong className="text-slate-900">Decide</strong> con seguridad y sin estrés</span>
+                        <span>
+                          <strong className="text-slate-900">Inteligencia de Datos:</strong> Auditoría y planificación automática de tu stock.
+                        </span>
                       </li>
-                      <li className="flex items-center gap-4 text-[14px] text-slate-700 font-medium">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+
+                      {/* BENEFICIO 2: EL ASESOR (EL HUMANO) - TU NUEVO FEATURE */}
+                      <li className="flex items-start gap-4 text-[14px] text-slate-700 font-medium">
+                        <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+                          <Users size={16} strokeWidth={2.5} />
+                        </div>
+                        <span>
+                          <strong className="text-slate-900">Asesoría Experta:</strong> Consultas ilimitadas con un especialista en inventarios ferreteros.
+                        </span>
+                      </li>
+
+                      {/* BENEFICIO 3: EL RESULTADO (EL TIEMPO) */}
+                      <li className="flex items-start gap-4 text-[14px] text-slate-700 font-medium">
+                        <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
                           <Clock size={16} strokeWidth={2.5} />
                         </div>
-                        <span><strong className="text-slate-900">Recupera</strong> 20+ horas a la semana</span>
+                        <span>
+                          <strong className="text-slate-900">Control Total:</strong> Recupera 20+ horas a la semana y elimina compras innecesarias.
+                        </span>
                       </li>
                     </div>
 
@@ -229,12 +240,20 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                   </div>
                 ) : (
                   <div className="py-2 animate-in fade-in slide-in-from-right-8 duration-500">
-                    <div className="mb-6">
-                      <h3 className="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">
-                        Sé el primero
-                      </h3>
-                      <p className="text-slate-600 text-sm leading-relaxed font-medium">
-                        Disponible pronto en 2026.<br/> Regístrate para recibir acceso prioritario y ser notificado apenas abramos las puertas.
+                    <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-2">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Estado de la convocatoria</span>
+                        <span className="text-[10px] font-bold text-blue-500">82% de cupos reservados</span>
+                      </div>
+                      <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
+                        <div className="h-full bg-blue-600 w-[82%] rounded-full transition-all duration-1000" />
+                      </div>
+                    </div>
+
+                    <div className="text-center md:text-left">
+                      <h2 className="text-2xl font-serif text-slate-900 mb-2">Reserva tu lugar.</h2>
+                      <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                        Estamos asignando <strong className="text-slate-900">analistas expertos</strong> por orden de registro. Asegura tu posición para el diagnóstico inicial.
                       </p>
                     </div>
                     

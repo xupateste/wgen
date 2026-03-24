@@ -80,7 +80,7 @@ export function SlidingAvatars({ onCtaClick }: { onCtaClick: () => void }) {
       </div>
       
       <span className="text-sm font-medium text-slate-500">
-        Únete a los <strong className="text-slate-900 font-extrabold">2k+</strong> dueños.
+        Únete a los <strong className="text-slate-900 font-extrabold">2k+</strong> ferreteros.
       </span>
     </div>
   );

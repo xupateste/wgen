@@ -11,7 +11,7 @@ export function FeatureSection() {
             <span className="text-blue-600 italic">recuperar el mando</span> de tu stock.
           </h2>
           <p className="text-slate-500 font-medium max-w-xl">
-            Genio no es una tarea más; es la inteligencia que activa el valor de la información que tu negocio genera cada día.
+            Genio PRO no es una tarea más; es la inteligencia que activa el valor de la información que tu negocio genera cada día.
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export function FeatureSection() {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Patrimonio de Datos</h3>
               <p className="text-slate-600 leading-relaxed font-medium">
-                Tus datos es tu activo más valioso. Genio lo transforma en una <strong>fuente inagotable de claridad</strong>, organizando años de experiencia para que tus decisiones futuras tengan cimientos sólidos y profesionales.
+                Tus datos es tu activo más valioso. Genio PRO lo transforma en una <strong>fuente inagotable de claridad</strong>, organizando años de experiencia para que tus decisiones futuras tengan cimientos sólidos y profesionales.
               </p>
             </div>
             <div className="absolute top-10 -right-10 w-64 h-64 bg-blue-100/40 blur-3xl rounded-full pointer-events-none" />
@@ -64,7 +64,7 @@ export function FeatureSection() {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">ADN de Consumo</h3>
               <p className="text-slate-600 leading-relaxed font-medium">
-                Entiende el ritmo único de <strong>tus clientes</strong>. Genio descifra los patrones de compra exclusivos de <strong>tu negocio</strong>, permitiéndote anticipar la demanda y fidelizar a tus compradores con el stock y surtido perfecto.
+                Entiende el ritmo único de <strong>tus clientes</strong>. Genio PRO descifra los patrones de compra exclusivos de <strong>tu negocio</strong>, permitiéndote anticipar la demanda y fidelizar a tus compradores con el stock y surtido perfecto.
               </p>
             </div>
             {/* Indicador visual de fidelidad sutil */}
