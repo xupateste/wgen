@@ -8,6 +8,11 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css"; 
 import Navbar from "@/components/Navbar";
 import { useWaitlist } from "@/components/WaitlistProvider";
+import { SlidingAvatars } from "@/components/SlidingAvatars";
+import { TestimonialSection } from "@/components/Testimonials";
+import { FeatureSection } from "@/components/Features";
+import { FinalCTA } from "@/components/FinalCTA";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -240,6 +245,8 @@ export default function Home() {
             <span>Analizar rentabilidad</span>
           </button>
         </div>
+
+        <SlidingAvatars onCtaClick={() => openModal("Click desde el botón + en Avatares")} />
       </main>
 
 
@@ -384,34 +391,41 @@ export default function Home() {
         </div>
       )}
 
+
+      <TestimonialSection />
+
+      <FeatureSection />
+
+      <FinalCTA />
+
+      <Footer />
+
+
       {/* 3. FOOTER / SERVICIOS ACTUALES */}
-      <footer id="servicios" className="w-full bg-white border-t border-slate-200 py-12 md:py-16">
+      {/*<footer id="servicios" className="w-full bg-white border-t border-slate-200 py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <h3 className="text-lg font-bold text-slate-900 mb-8 text-center md:text-left">También disponible en Ferreteros.app</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Freemium */}
+            
             <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
               <TrendingUp className="text-blue-600 mb-3" size={24} />
               <h4 className="font-semibold text-slate-900 mb-2">Análisis Todo en 1</h4>
               <p className="text-sm text-slate-500">Freemium con créditos gratis diarios y recargas disponibles.</p>
             </div>
 
-            {/* Herramientas Independientes */}
             <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
               <PackageX className="text-blue-600 mb-3" size={24} />
               <h4 className="font-semibold text-slate-900 mb-2">Gestión de Stock</h4>
               <p className="text-sm text-slate-500">Control de stock-muerto, rotación y plan de compra.</p>
             </div>
 
-            {/* Ejecución Anónima */}
             <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
               <FileText className="text-blue-600 mb-3" size={24} />
               <h4 className="font-semibold text-slate-900 mb-2">Catálogos y Pedidos</h4>
               <p className="text-sm text-slate-500">Ejecución anónima para generar catálogos de productos.</p>
             </div>
 
-            {/* Facturación */}
             <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
               <Receipt className="text-blue-600 mb-3" size={24} />
               <h4 className="font-semibold text-slate-900 mb-2">Facturación Electrónica</h4>
@@ -419,7 +433,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer>*/}
 
     </div>
   );

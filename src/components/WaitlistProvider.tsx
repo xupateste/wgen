@@ -115,7 +115,11 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 
               {/* CONTENIDO DEL MODAL */}
               <div className="relative z-10">
-                <button onClick={closeModal} className="absolute -top-2 -right-2 text-slate-400 bg-slate-50 hover:bg-slate-100 hover:text-slate-700 p-2 rounded-full transition-all shadow-sm border border-slate-100">
+                <button 
+                  onClick={closeModal} 
+                  className="absolute top-2 right-2 z-[60] cursor-pointer text-slate-400 bg-slate-50 hover:bg-slate-200 hover:text-slate-700 p-2.5 rounded-full transition-all shadow-sm border border-slate-100 active:scale-95"
+                  aria-label="Cerrar modal"
+                >
                   <X size={18} strokeWidth={2.5} />
                 </button>
                 

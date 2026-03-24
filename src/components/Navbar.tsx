@@ -57,12 +57,12 @@ export default function Navbar() {
           <span className="sr-only">Ferreteros.app</span>
         </Link>
         
-        <div className="flex items-center gap-4 md:gap-6">
+        <div className="flex items-center gap-4 md:gap-3">
           <Link 
             href="/#servicios" 
-            className="hidden md:block text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors"
+            className="hidden md:flex cursor-pointer rounded-lg h-10 md:h-12 border border-slate-400 items-center justify-center px-3 md:px-5 text-sm text-slate-600 hover:text-blue-600 transition-colors"
           >
-            Recursos 🎁
+            Recursos
           </Link>
           
           {/* BOTÓN ACTUALIZADO PARA MODAL Y DISEÑO DE KLEO */}
