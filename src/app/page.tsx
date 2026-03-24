@@ -22,72 +22,45 @@ export default function Home() {
   const [alreadyRegistered, setAlreadyRegistered] = useState(false);
   const { openModal } = useWaitlist();
 
-  const [placeholder, setPlaceholder] = useState("");
+  // Dentro de tu componente Home
+  const [isFocused, setIsFocused] = useState(false);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [phraseIndex, setPhraseIndex] = useState(0);
+
   const phrases = [
-    "¿Qué productos no han rotado en 90 días?",
-    "Generar hoja de actividades para mi equipo en esta semana",
-    "¿Cuánto capital hay atrapado en Electricidad?",
-    "Comparar mi velocidad de venta actual con un plan de compras optimizado para mejorar el flujo de caja",
-    "¿Qué proveedores debo pagar esta semana?",
-    "Analizar rentabilidad de la marca Truper",
-    "Realizar un análisis de inventario y financiero para ver qué familias de productos no están dejando retorno de inversión",
-    "Cruzar registros de ventas con stock físico para detectar discrepancias y mala gestión operativa",
+    "empezar a usar Ferreteros.app...",
+    "analizar mis productos sin rotación...",
+    "generar un plan de compras optimizado...",
+    "entender mi rentabilidad por marca...",
+    "auditar el capital atrapado en stock...",
   ];
 
   useEffect(() => {
-    let currentPhraseIndex = 0;
-    let currentCharacterIndex = 0;
-    let isDeleting = false;
-    let timeoutId: NodeJS.Timeout;
+    // REGLA DE ORO: Si hay foco o hay texto, no hay animación.
+    if (isFocused || chatInput.length > 0) return;
 
-    const phrases = [
-      "¿Qué productos no han rotado en 90 días?",
-      "Generar hoja de ruta para mi equipo hoy",
-      "¿Cuánto capital hay atrapado en Electricidad?",
-      "¿Qué proveedores debo pagar esta semana?",
-      "Analizar rentabilidad de la marca Truper"
-    ];
+    const currentPhrase = phrases[phraseIndex];
+    const speed = isDeleting ? 30 : 60;
 
-    const type = () => {
-      const currentPhrase = phrases[currentPhraseIndex];
-      
-      // Determinamos el texto actual
-      const nextText = isDeleting 
-        ? currentPhrase.substring(0, currentCharacterIndex - 1)
-        : currentPhrase.substring(0, currentCharacterIndex + 1);
-
-      // ACTUALIZACIÓN: En iOS, a veces setState no dispara el repintado del placeholder
-      // Usamos requestAnimationFrame para asegurar que el navegador esté listo para pintar
-      window.requestAnimationFrame(() => {
-        setPlaceholder(nextText);
-        if (isDeleting) {
-          currentCharacterIndex--;
-        } else {
-          currentCharacterIndex++;
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setDisplayText(currentPhrase.substring(0, displayText.length + 1));
+        if (displayText === currentPhrase) {
+          setTimeout(() => setIsDeleting(true), 2000);
         }
-      });
-
-      // --- LÓGICA DE TIEMPOS (ELÁSTICA) ---
-      let typeSpeed = isDeleting ? 5 : 15;
-
-      if (!isDeleting && currentCharacterIndex === currentPhrase.length) {
-        typeSpeed = 2000; // Pausa al terminar
-        isDeleting = true;
-      } else if (isDeleting && currentCharacterIndex === 0) {
-        isDeleting = false;
-        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-        typeSpeed = 600; // Pausa antes de nueva frase
-      } else if (isDeleting) {
-        // Aceleración exponencial al borrar para iOS
-        typeSpeed = Math.max(15, 60 * Math.pow(0.8, currentPhrase.length - currentCharacterIndex));
+      } else {
+        setDisplayText(currentPhrase.substring(0, displayText.length - 1));
+        if (displayText === "") {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % phrases.length);
+        }
       }
+    }, speed);
 
-      timeoutId = setTimeout(type, typeSpeed);
-    };
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, phraseIndex, chatInput, isFocused]);
 
-    type();
-    return () => clearTimeout(timeoutId);
-  }, []);
 
   // 2. NUEVO EFECTO: Escuchar si venimos del blog con la etiqueta #waitlist
   useEffect(() => {
@@ -110,9 +83,21 @@ export default function Home() {
   const handleModalSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const getOrLinkUserId = () => {
+      let existingId = localStorage.getItem("ferreteros_user_id");
+      
+      if (!existingId) {
+        existingId = crypto.randomUUID(); // Genera un ID único tipo: "123e4567-e89b-12d3-a456-426614174000"
+        localStorage.setItem("ferreteros_user_id", existingId);
+      }
+      
+      return existingId;
+    };
     
     const formData = new FormData(e.currentTarget);
     const data = {
+      waitlist_id: getOrLinkUserId(),
       nombre: formData.get("nombre") as string,
       email: formData.get("email") as string,
       whatsapp: phone || "",
@@ -140,9 +125,9 @@ export default function Home() {
   // Función intermediaria para evitar que el navegador recargue al dar "Enter"
   const handleSimulatedChat = (e?: React.FormEvent | React.MouseEvent) => {
     if (e) e.preventDefault();
-    openModal(chatInput); // Le pasamos lo que el usuario escribió al modal global
+    // openModal ahora se encarga de abrir el modal global y pasarle el prompt
+    openModal(chatInput); 
   };
-
 
   return (
     <div className="min-h-screen bg-[#f8faff] text-slate-900 font-sans flex flex-col">
@@ -152,46 +137,67 @@ export default function Home() {
 
       {/* HERO SECTION */}
       {/* pt-24 en móvil y pt-28 en PC para subir el contenido. pb-16 para no dejar tanto espacio abajo */}
-      <main className="flex-grow flex flex-col items-center justify-center px-4 pt-24 md:pt-28 pb-16 text-center max-w-4xl mx-auto w-full relative z-10">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 pt-24 md:pt-38 pb-16 text-center max-w-4xl mx-auto w-full relative z-10">
         
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-blue-100 bg-blue-50/50 text-blue-600 text-[11px] font-bold tracking-widest uppercase mb-6 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-blue-100 bg-white text-blue-600 text-[11px] font-bold tracking-widest uppercase mb-6 md:mb-8 shadow-sm">
           {/*<Zap size={14} fill="currentColor" />*/}
-          <span>#1 EN OPTIMIZACIÓN DE FERRETERIAS</span>
+          <span>Gestión IA + Asesorías Ilimitadas</span>
         </div>
 
         {/* Cambiamos font-extrabold a font-bold, y text-[64px] a text-[56px] para mayor elegancia */}
-        <h1 className="text-3xl md:text-[56px] tracking-tight font-semibold text-slate-900 mb-5 leading-[1.15] md:leading-[1.1]">
+        <h1 className="text-3xl md:text-[60px] tracking-tight font-medium text-slate-900 mb-5 md:mb-6 leading-[1.1] md:leading-[1.15]">
           Dirigir tu ferretería como un experto {' '}
           <span className="text-blue-600">nunca fue tan sencillo</span>
         </h1>
 
         {/* Margen mb-8 (antes 12) y quitamos font-medium para aligerar la lectura */}
-        <p className="text-slate-500 tracking-tight max-w-[55ch] md:text-lg mb-6 md:mb-8 max-w-2xl font-semibold px-2 leading-relaxed">
-          Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu negocio en un solo lugar. Obtén el respaldo de un <strong>analista experto dedicado</strong> que entiende el rubro.
+        <p className="text-slate-500 tracking-tight max-w-[55ch] md:text-[18px] mb-6 md:mb-8 max-w-2xl font-semibold px-2 leading-[1.7]">
+          Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu operación en un solo lugar. Obtén el respaldo de un analista experto <strong>dedicado a tu ferreteria</strong>.
         </p>
 
         {/* Borde del chatbox a 1px (border normal) para que sea definido pero no tosco */}
-        <div className="w-full max-w-3xl relative shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-2xl bg-white border-2 border border-slate-700 p-1 mb-4 md:mb-6 hover:shadow-[0_8px_30px_rgb(37,99,235,0.12)] hover:border-blue-600 transition-all duration-300">
+        <div className="w-full max-w-2xl relative shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-2xl bg-white border-2 border border-slate-700 p-1 mb-4 md:mb-6 hover:shadow-[0_8px_30px_rgb(37,99,235,0.12)] hover:border-blue-600 transition-all duration-300">
           <form onSubmit={handleSimulatedChat} className="relative flex flex-col">
+
+            {/* CAPA DE ANIMACIÓN (GHOST TEXT) */}
+            {!isFocused && chatInput.length === 0 && (
+              <div className="absolute top-4 left-4 pointer-events-none text-[16px] font-semibold text-slate-400 flex items-center z-0">
+                <span className="text-slate-600/70">Quiero </span>
+                <span className="ml-1 text-slate-600/70">{displayText}</span>
+                <span className="w-[2px] h-[1.2em] bg-slate-600/70 ml-0.5 animate-cursor" />
+              </div>
+            )}
+
+            {/* TEXTAREA (Capa Z-10) */}
             <textarea 
               spellCheck="false"
-              autoComplete="off"
-              key={placeholder}
               value={chatInput}
+              onFocus={() => { setIsFocused(true); setDisplayText(""); }}
+              onBlur={() => setIsFocused(false)}
               onChange={(e) => setChatInput(e.target.value)}
-              rows={2}
-              placeholder={placeholder}
-              className="w-full text-slate-900 bg-transparent border-none outline-none px-4 pt-4 pb-12 md:pb-14 text-base md:text-lg resize-none placeholder:text-slate-400 font-semibold"
+              rows={3}
+              /* Importante: text-[16px] para evitar zoom en iOS */
+              className="w-full text-slate-900 bg-transparent border-none outline-none px-4 pt-4 pb-12 md:pb-14 text-[16px] md:text-base resize-none font-semibold relative z-10 cursor-text"
+              placeholder={isFocused ? "Cuéntanos sobre tu ferretería..." : ""}
             />
             
-            <div className="absolute bottom-2 left-3 flex items-center">
-              <button type="button" onClick={handleSimulatedChat} className="p-2 text-slate-400 hover:text-slate-800 transition-colors rounded-md">
+            <div className="absolute bottom-2 left-2 flex items-center z-30">
+              <button 
+                type="button"
+                onClick={handleSimulatedChat} 
+                className="p-2 text-slate-400 hover:text-slate-800 transition-colors rounded-md cursor-pointer pointer-events-auto"
+              >
                 <Paperclip size={20} />
               </button>
             </div>
 
-            <div className="absolute bottom-2 right-2 flex items-center">
-              <button type="submit" className="bg-[#0f6fff] hover:bg-blue-700 text-white p-2 md:p-2.5 rounded-lg md:rounded-xl transition-transform hover:scale-105 shadow-sm flex items-center justify-center">
+            {/* CONTENEDOR BOTÓN DERECHO (Capa Z-30) */}
+            <div className="absolute bottom-2 right-2 flex items-center z-30">
+              <button 
+                type="submit" 
+                /* Usamos cursor-pointer explícito y pointer-events-auto */
+                className="bg-blue-600 hover:bg-blue-700 text-white p-2.5 rounded-xl shadow-sm transition-transform hover:scale-105 flex items-center justify-center cursor-pointer pointer-events-auto"
+              >
                 <ArrowUp size={20} strokeWidth={2.5} />
               </button>
             </div>
@@ -399,41 +405,6 @@ export default function Home() {
       <FinalCTA />
 
       <Footer />
-
-
-      {/* 3. FOOTER / SERVICIOS ACTUALES */}
-      {/*<footer id="servicios" className="w-full bg-white border-t border-slate-200 py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <h3 className="text-lg font-bold text-slate-900 mb-8 text-center md:text-left">También disponible en Ferreteros.app</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
-              <TrendingUp className="text-blue-600 mb-3" size={24} />
-              <h4 className="font-semibold text-slate-900 mb-2">Análisis Todo en 1</h4>
-              <p className="text-sm text-slate-500">Freemium con créditos gratis diarios y recargas disponibles.</p>
-            </div>
-
-            <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
-              <PackageX className="text-blue-600 mb-3" size={24} />
-              <h4 className="font-semibold text-slate-900 mb-2">Gestión de Stock</h4>
-              <p className="text-sm text-slate-500">Control de stock-muerto, rotación y plan de compra.</p>
-            </div>
-
-            <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
-              <FileText className="text-blue-600 mb-3" size={24} />
-              <h4 className="font-semibold text-slate-900 mb-2">Catálogos y Pedidos</h4>
-              <p className="text-sm text-slate-500">Ejecución anónima para generar catálogos de productos.</p>
-            </div>
-
-            <div className="p-5 border border-slate-100 rounded-xl bg-slate-50">
-              <Receipt className="text-blue-600 mb-3" size={24} />
-              <h4 className="font-semibold text-slate-900 mb-2">Facturación Electrónica</h4>
-              <p className="text-sm text-slate-500">Módulo de pago para la gestión fiscal y emisión de comprobantes.</p>
-            </div>
-          </div>
-        </div>
-      </footer>*/}
 
     </div>
   );

@@ -5,7 +5,7 @@
 // Accedemos a la variable de entorno de forma segura
 const WEBHOOK_URL = process.env.MAKE_WEBHOOK_URL;
 
-export async function submitWaitlist(data: { nombre: string; email: string; whatsapp: string; prompt: string; honeypot: string }) {
+export async function submitWaitlist(data: { nombre: string; email: string; whatsapp: string; prompt: string; honeypot: string; waitlist_id: string  }) {
   
   // 1. PREVENCIÓN DE ABUSO: Si el honeypot tiene texto, es un bot.
   // Retornamos 'true' para que el bot crea que tuvo éxito, pero NO enviamos nada a Make.
@@ -28,6 +28,7 @@ export async function submitWaitlist(data: { nombre: string; email: string; what
         nombre: data.nombre,
         email: data.email, 
         whatsapp: data.whatsapp,
+        waitlist_id: data.waitlist_id,
         intencion_busqueda: data.prompt, 
         origen: "Landing Genio",
         fecha: new Date().toISOString() 

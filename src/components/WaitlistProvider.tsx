@@ -56,9 +56,22 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
   const handleModalSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // Dentro de tu componente o función de envío
+    const getOrLinkUserId = () => {
+      let existingId = localStorage.getItem("ferreteros_user_id");
+      
+      if (!existingId) {
+        existingId = crypto.randomUUID(); // Genera un ID único tipo: "123e4567-e89b-12d3-a456-426614174000"
+        localStorage.setItem("ferreteros_user_id", existingId);
+      }
+      
+      return existingId;
+    };
     
     const formData = new FormData(e.currentTarget);
     const data = {
+      waitlist_id: getOrLinkUserId(), // Este es el ID que vincula las ediciones
       nombre: formData.get("nombre") as string,
       email: formData.get("email") as string,
       whatsapp: phone || "",
@@ -234,30 +247,20 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                         <div className="w-7 h-7 rounded-full ring-2 ring-white z-10 bg-emerald-500 text-white text-[10px] font-bold flex items-center justify-center shadow-sm">CA</div>
                       </span>
                       <span>
-                        Únete a los más de <strong className="font-bold text-slate-700">2 mil ferreteros</strong> en la lista.
+                        Únete a los más de <strong className="font-bold text-slate-700">2k ferreteros.</strong>
                       </span>
                     </div>
                   </div>
                 ) : (
                   <div className="py-2 animate-in fade-in slide-in-from-right-8 duration-500">
-                    <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-2">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Estado de la convocatoria</span>
-                        <span className="text-[10px] font-bold text-blue-500">82% de cupos reservados</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden">
-                        <div className="h-full bg-blue-600 w-[82%] rounded-full transition-all duration-1000" />
-                      </div>
-                    </div>
-
-                    <div className="text-center md:text-left">
+                    <div className="text-center md:text-left mb-6">
                       <h2 className="text-2xl font-serif text-slate-900 mb-2">Reserva tu lugar.</h2>
                       <p className="text-sm text-slate-500 leading-relaxed font-medium">
                         Estamos asignando <strong className="text-slate-900">analistas expertos</strong> por orden de registro. Asegura tu posición para el diagnóstico inicial.
                       </p>
                     </div>
                     
-                    <form onSubmit={handleModalSubmit} className="flex flex-col gap-4 text-left">
+                    <form onSubmit={handleModalSubmit} className="flex flex-col gap-2 text-left">
                       <div aria-hidden="true" className="opacity-0 absolute -left-[9999px]">
                         <input type="text" name="empresa_secundaria" tabIndex={-1} autoComplete="off" />
                       </div>
@@ -265,17 +268,20 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       <div className="group">
                         <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5 group-focus-within:text-blue-600 transition-colors">Nombre Completo</label>
                         {/* OPTIMIZACIÓN 3: Inputs sólidos (bg-slate-50) */}
-                        <input type="text" name="nombre" required placeholder="Ej. Juan Pérez" className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-slate-800 placeholder:text-slate-400" />
+                        <input type="text" name="nombre" required placeholder="Ej. Juan Pérez" className="w-full px-4 py-1.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-slate-800 placeholder:text-slate-400" />
                       </div>
 
                       <div className="group">
                         <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5 group-focus-within:text-blue-600 transition-colors">Correo Electrónico</label>
-                        <input type="email" name="email" required placeholder="tu@correo.com" className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-slate-800 placeholder:text-slate-400" />
+                        <input type="email" name="email" required placeholder="tu@correo.com" className="w-full px-4 py-1.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all outline-none text-slate-800 placeholder:text-slate-400" />
                       </div>
 
                       <div className="group">
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5 group-focus-within:text-blue-600 transition-colors">WhatsApp</label>
-                        <div className="w-full px-4 py-3.5 rounded-xl bg-slate-50 border border-slate-200 focus-within:bg-white focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/10 transition-all">
+                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5 group-focus-within:text-blue-600 flex justify-between transition-colors">
+                          WhatsApp
+                          <span className="text-blue-500 font-bold normal-case italic tracking-normal">Para tu asesor</span>
+                        </label>
+                        <div className="w-full px-4 py-1.5 rounded-xl bg-slate-50 border border-slate-200 focus-within:bg-white focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/10 transition-all">
                           <PhoneInput international defaultCountry="PE" value={phone} onChange={setPhone} className="outline-none bg-transparent text-slate-800" placeholder="Ingresa tu número" required />
                         </div>
                       </div>

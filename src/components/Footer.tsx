@@ -1,115 +1,89 @@
 import { 
   Zap, Microscope, FileText, ShoppingBag, 
   Calculator, RefreshCw, CheckSquare, LayoutGrid,
-  MessageCircle, Linkedin, Instagram 
+  MessageCircle, Youtube, Facebook
 } from "lucide-react";
+
+// Icono personalizado para TikTok (Lucide no lo tiene por defecto)
+const TikTokIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-950 text-slate-400 py-20 border-t border-white/5">
+    <footer className="bg-slate-950 text-slate-400 py-16 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
-          {/* COLUMNA 1: MARCA Y MISIÓN */}
+          {/* COLUMNA 1: MARCA Y REDES */}
           <div className="space-y-6">
-            <div className="flex items-center gap-2 text-white">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-black text-sm">F</div>
-              <span className="text-xl font-serif tracking-tight font-bold">ferreteros.app</span>
-            </div>
-            <p className="text-sm leading-relaxed max-w-xs">
-              La plataforma inteligente para el dueño de ferretería moderno. Datos, estrategia y control en un solo lugar.
+            <a href="#" className="inline-block outline-none transition-transform hover:scale-[1.02]">
+              <div className="h-10 w-32 bg-[url('/logo.png')] bg-contain bg-no-repeat bg-left brightness-0 invert" />
+              <span className="sr-only">ferreteros.app</span>
+            </a>
+            
+            <p className="text-sm leading-relaxed max-w-xs opacity-80">
+              La plataforma de inteligencia para dueños de ferretería. Datos, estrategia y control en un solo lugar.
             </p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="hover:text-blue-400 transition-colors"><Linkedin size={20} /></a>
-              <a href="#" className="hover:text-blue-400 transition-colors"><Instagram size={20} /></a>
-              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500 border-l border-slate-800 pl-4">
-                🇵🇪 LIMA, PERÚ
-              </div>
+
+            <div className="flex items-center gap-5">
+              <a href="#" className="hover:text-white transition-all hover:scale-110" title="TikTok"><TikTokIcon size={20} /></a>
+              <a href="#" className="hover:text-red-500 transition-all hover:scale-110" title="YouTube"><Youtube size={20} /></a>
+              <a href="#" className="hover:text-blue-500 transition-all hover:scale-110" title="Facebook"><Facebook size={20} /></a>
+              <a href="https://wa.me/51999999999" className="hover:text-emerald-500 transition-all hover:scale-110" title="WhatsApp"><MessageCircle size={20} /></a>
+            </div>
+
+            <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
+               🇵🇪 LIMA, PERÚ
             </div>
           </div>
 
-          {/* COLUMNA 2: SERVICIOS (Renombrado y Actualizado) */}
+          {/* COLUMNA 2: SERVICIOS */}
           <div>
-            <h4 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-8 opacity-50">Servicios</h4>
+            <h4 className="text-white font-bold text-[10px] uppercase tracking-[0.25em] mb-8 opacity-40">Servicios</h4>
             <ul className="space-y-5">
-              <li>
-                <a href="#" className="group flex items-center gap-3 hover:text-white transition-colors">
-                  <Zap size={16} className="text-blue-500" />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold text-slate-200">Genio PRO</span>
-                    <span className="text-[10px] text-slate-600">Integrador y Asesoría</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="group flex items-center gap-3 hover:text-white transition-colors">
-                  <Microscope size={16} className="text-slate-500 group-hover:text-blue-400" />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold">Laboratorio de Datos</span>
-                    <span className="text-[10px] text-slate-600">Auditoría de Inventarios</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="group flex items-center gap-3 hover:text-white transition-colors">
-                  <FileText size={16} className="text-slate-500 group-hover:text-emerald-400" />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold">Facturación Electrónica</span>
-                    <span className="text-[10px] text-slate-600">Conexión con SUNAT</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="group flex items-center gap-3 hover:text-white transition-colors">
-                  <ShoppingBag size={16} className="text-slate-500 group-hover:text-orange-400" />
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold">Catálogo de Pedidos</span>
-                    <span className="text-[10px] text-slate-600">Ventas por WhatsApp</span>
-                  </div>
-                </a>
-              </li>
+              <FooterLink icon={<Zap size={14} className="text-blue-500" />} title="Genio PRO" desc="IA + Asesoría" />
+              <FooterLink icon={<Microscope size={14} />} title="Laboratorio de Datos" desc="Auditoría de Stock" />
+              <FooterLink icon={<FileText size={14} />} title="Facturación" desc="Conexión SUNAT" />
+              <FooterLink icon={<ShoppingBag size={14} />} title="Catálogo" desc="Ventas WhatsApp" />
             </ul>
           </div>
 
-          {/* COLUMNA 3: HERRAMIENTAS GRATIS (Nuevo Enfoque) */}
+          {/* COLUMNA 3: HERRAMIENTAS GRATIS */}
           <div>
-            <h4 className="text-white font-bold text-[11px] uppercase tracking-[0.2em] mb-8 opacity-50">Herramientas Gratis</h4>
+            <h4 className="text-white font-bold text-[10px] uppercase tracking-[0.25em] mb-8 opacity-40">Herramientas Gratis</h4>
             <ul className="space-y-4">
-              <li>
-                <a href="#" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
-                  <Calculator size={14} className="text-slate-600" /> Calculadora Stock Muerto
-                </a>
+              <li className="flex items-center gap-3 text-sm hover:text-white transition-colors cursor-pointer">
+                <Calculator size={14} className="opacity-40" /> Calculadora Stock Muerto
               </li>
-              <li>
-                <a href="#" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
-                  <RefreshCw size={14} className="text-slate-600" /> Calculadora Rotación de Stock
-                </a>
+              <li className="flex items-center gap-3 text-sm hover:text-white transition-colors cursor-pointer">
+                <RefreshCw size={14} className="opacity-40" /> Análisis de Rotación
               </li>
-              <li>
-                <a href="#" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
-                  <CheckSquare size={14} className="text-slate-600" /> Plan de Compra Óptimo
-                </a>
+              <li className="flex items-center gap-3 text-sm hover:text-white transition-colors cursor-pointer">
+                <CheckSquare size={14} className="opacity-40" /> Plan de Compra Óptimo
               </li>
-              <li>
-                <a href="#" className="flex items-center gap-3 text-sm hover:text-white transition-colors">
-                  <LayoutGrid size={14} className="text-slate-600" /> Análisis ABC
-                </a>
+              <li className="flex items-center gap-3 text-sm hover:text-white transition-colors cursor-pointer">
+                <LayoutGrid size={14} className="opacity-40" /> Clasificación ABC
               </li>
             </ul>
           </div>
 
-          {/* COLUMNA 4: CONTACTO DIRECTO */}
-          <div className="bg-white/[0.03] p-6 rounded-[32px] border border-white/5">
-            <h4 className="text-white font-bold text-sm mb-4">¿Tienes dudas?</h4>
-            <p className="text-xs mb-6 text-slate-500 leading-relaxed">Habla directamente con nuestro equipo técnico sobre la integración.</p>
+          {/* COLUMNA 4: CONTACTO */}
+          <div className="bg-white/[0.02] p-6 rounded-3xl border border-white/5 flex flex-col justify-between">
+            <div>
+              <h4 className="text-white font-bold text-sm mb-3">¿Necesitas ayuda?</h4>
+              <p className="text-xs text-slate-500 leading-relaxed mb-6">Habla con un asesor experto sobre cómo integrar tus datos.</p>
+            </div>
             <a 
               href="https://wa.me/51999999999" 
-              className="flex items-center justify-center gap-2 bg-white text-slate-950 font-bold py-3.5 rounded-2xl text-[11px] uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all active:scale-95"
+              className="flex items-center justify-center gap-2 bg-white text-slate-950 font-black py-3 rounded-2xl text-[10px] uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all active:scale-95"
             >
-              <MessageCircle size={16} fill="currentColor" />
-              WhatsApp Soporte
+              <MessageCircle size={14} fill="currentColor" />
+              Contactar Soporte
             </a>
           </div>
 
@@ -117,16 +91,30 @@ export function Footer() {
 
         {/* BARRA INFERIOR */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-600">
+          <div className="flex flex-wrap justify-center gap-6 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-600">
             <a href="#" className="hover:text-white transition-colors">Privacidad</a>
             <a href="#" className="hover:text-white transition-colors">Términos</a>
             <a href="#" className="hover:text-white transition-colors">Libro de Reclamaciones</a>
           </div>
           <p className="text-[10px] font-medium text-slate-700">
-            © {currentYear} ferreteros.app — Lima, Perú.
+            © {currentYear} ferreteros.app — Todos los derechos reservados.
           </p>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterLink({ icon, title, desc }: { icon: any, title: string, desc: string }) {
+  return (
+    <li>
+      <a href="#" className="group flex items-center gap-3 hover:text-white transition-colors">
+        <div className="text-slate-600 group-hover:text-blue-400 transition-colors">{icon}</div>
+        <div className="flex flex-col">
+          <span className="text-sm font-bold text-slate-300 group-hover:text-white">{title}</span>
+          <span className="text-[9px] text-slate-600 uppercase tracking-wider">{desc}</span>
+        </div>
+      </a>
+    </li>
   );
 }
