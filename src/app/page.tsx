@@ -29,11 +29,10 @@ export default function Home() {
   const [phraseIndex, setPhraseIndex] = useState(0);
 
   const phrases = [
-    "empezar a usar Ferreteros.app...",
-    "analizar mis productos sin rotación...",
-    "generar un plan de compras optimizado...",
-    "entender mi rentabilidad por marca...",
-    "auditar el capital atrapado en stock...",
+    "Quiero analizar mis productos sin rotación...",
+    "Quiero generar un plan de compras optimizado...",
+    "Quiero entender mi rentabilidad por marca...",
+    "Quiero auditar el capital atrapado en stock...",
   ];
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Home() {
     if (isFocused || chatInput.length > 0) return;
 
     const currentPhrase = phrases[phraseIndex];
-    const speed = isDeleting ? 30 : 60;
+    const speed = isDeleting ? 5 : 20;
 
     const timeout = setTimeout(() => {
       if (!isDeleting) {
@@ -162,8 +161,7 @@ export default function Home() {
             {/* CAPA DE ANIMACIÓN (GHOST TEXT) */}
             {!isFocused && chatInput.length === 0 && (
               <div className="absolute top-4 left-4 pointer-events-none text-[16px] font-semibold text-slate-400 flex items-center z-0">
-                <span className="text-slate-600/70">Quiero </span>
-                <span className="ml-1 text-slate-600/70">{displayText}</span>
+                <span className="ml-1 text-slate-600/70 text-left">{displayText}</span>
                 <span className="w-[2px] h-[1.2em] bg-slate-600/70 ml-0.5 animate-cursor" />
               </div>
             )}
@@ -178,7 +176,7 @@ export default function Home() {
               rows={3}
               /* Importante: text-[16px] para evitar zoom en iOS */
               className="w-full text-slate-900 bg-transparent border-none outline-none px-4 pt-4 pb-12 md:pb-14 text-[16px] md:text-base resize-none font-semibold relative z-10 cursor-text"
-              placeholder={isFocused ? "Cuéntanos sobre tu ferretería..." : ""}
+              placeholder={isFocused ? "Quiero empezar a usar Ferreteros.app..." : ""}
             />
             
             <div className="absolute bottom-2 left-2 flex items-center z-30">

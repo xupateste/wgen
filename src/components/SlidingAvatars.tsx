@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus, Star } from 'lucide-react';
 
 // Tipado para cada avatar con un ID único para React
 interface AvatarInstance {
@@ -12,12 +12,21 @@ interface AvatarInstance {
 export function SlidingAvatars({ onCtaClick }: { onCtaClick: () => void }) {
   const allInitials = [
     'SM', 'KA', 'SO', 'RI', 'ME', 'AB', 'SU', 'RO', 'JE', 'MI', 
-    'BA', 'ZA', 'LU', 'VI', 'CO', 'TO', 'MA', 'QU', 'MO', 'ZE'
+    'BA', 'ZA', 'LU', 'VI', 'CO', 'TO', 'MA', 'QU', 'MO', 'ZE',
+    'AN', 'CL', 'DA', 'EL', 'FR', 'GA', 'HA', 'IO', 'LA', 'NO', 
+    'PA', 'RU', 'SA', 'TI', 'UM', 'VA', 'XO', 'YA', 'ZO', 'BE',
+    'DI', 'FO', 'HU', 'LI', 'NE', 'OR', 'PI', 'RE', 'SI', 'TE'
   ];
 
   const bgColors = [
+    // Tus tonos fríos y corporativos (Seguridad y Tecnología)
     'bg-blue-600', 'bg-slate-800', 'bg-emerald-600', 'bg-indigo-600', 
-    'bg-sky-600', 'bg-teal-600', 'bg-cyan-700', 'bg-blue-800'
+    'bg-sky-600', 'bg-teal-600', 'bg-cyan-700', 'bg-blue-800',
+    'bg-slate-900', 'bg-indigo-800', 'bg-emerald-700', 'bg-blue-700',
+    
+    // NUEVOS: Tonos cálidos y vibrantes (Diversidad y Energía)
+    'bg-orange-600', 'bg-rose-600', 'bg-amber-600', 'bg-violet-600',
+    'bg-red-700', 'bg-fuchsia-700', 'bg-pink-700', 'bg-yellow-600'
   ];
 
   // Estado inicial: 5 avatares con IDs únicos
@@ -46,7 +55,8 @@ export function SlidingAvatars({ onCtaClick }: { onCtaClick: () => void }) {
   }, []); // [] asegura que el intervalo NO se reinicie nunca
 
   const getColor = (initials: string) => {
-    const hash = initials.charCodeAt(0) + (initials.charCodeAt(1) || 0);
+    // El hash ahora tiene más "espacio" para elegir colores distintos
+    const hash = initials.charCodeAt(0) * 31 + (initials.charCodeAt(1) || 0);
     return bgColors[hash % bgColors.length];
   };
 
@@ -79,10 +89,20 @@ export function SlidingAvatars({ onCtaClick }: { onCtaClick: () => void }) {
           <Plus size={18} strokeWidth={3} />
         </button>
       </div>
-      
-      <span className="text-sm font-medium text-slate-500">
-        Únete a los <strong className="text-slate-900 font-extrabold">2k+</strong> ferreteros.
-      </span>
+      <div className="flex flex-col">
+        <div className="flex justify-center sm:justify-start gap-1 mb-1">
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+          ))}
+          <span className="text-sm font-medium text-slate-500">
+            5.0
+          </span>
+        </div>
+
+        <span className="text-sm font-medium text-slate-500 -mt-1">
+          Únete a los <strong className="text-slate-900 font-extrabold">2k+</strong> ferreteros.
+        </span>
+      </div>
     </div>
   );
 }

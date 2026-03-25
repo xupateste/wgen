@@ -68,7 +68,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
       
       return existingId;
     };
-    
+
     const formData = new FormData(e.currentTarget);
     const data = {
       waitlist_id: getOrLinkUserId(), // Este es el ID que vincula las ediciones
@@ -130,7 +130,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
               <div className="relative z-10">
                 <button 
                   onClick={closeModal} 
-                  className="absolute top-2 right-2 z-[60] cursor-pointer text-slate-400 bg-slate-50 hover:bg-slate-200 hover:text-slate-700 p-2.5 rounded-full transition-all shadow-sm border border-slate-100 active:scale-95"
+                  className="absolute top-0 right-0 z-[60] cursor-pointer text-slate-400 bg-slate-50 hover:bg-slate-200 hover:text-slate-700 p-2.5 rounded-full transition-all shadow-sm border border-slate-100 active:scale-95"
                   aria-label="Cerrar modal"
                 >
                   <X size={18} strokeWidth={2.5} />
@@ -197,13 +197,13 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                     <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-4 tracking-tight leading-tight">
                       De ferreteros,<br/> para ferreteros.
                     </h2>
-                    <p className="text-slate-600 text-[16px] mb-4 leading-relaxed font-medium">
+                    <p className="text-slate-600 text-[14px] mb-4 leading-relaxed font-medium">
                       Deja de ser el cuello de botella de tu propia ferretería. Construimos <strong className="text-blue-600 font-extrabold">Genio</strong> <strong className="text-slate-900 font-extrabold">PRO</strong> para devolverte la confianza y que dirijas tu negocio como un experto.
                     </p>
                     
-                    <div className="bg-slate-50/80 border border-slate-100 rounded-[24px] p-5 mb-6 space-y-4 shadow-sm">
+                    <div className="bg-slate-50/80 border border-slate-100 rounded-[24px] p-3 mb-5 space-y-4 shadow-sm">
                       {/* BENEFICIO 1: EL SOFTWARE (LA IA) */}
-                      <li className="flex items-start gap-4 text-[14px] text-slate-700 font-medium">
+                      <li className="flex items-start gap-2 text-[14px] text-slate-700 font-medium">
                         <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
                           <Brain size={16} strokeWidth={2.5} />
                         </div>
@@ -213,7 +213,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       </li>
 
                       {/* BENEFICIO 2: EL ASESOR (EL HUMANO) - TU NUEVO FEATURE */}
-                      <li className="flex items-start gap-4 text-[14px] text-slate-700 font-medium">
+                      <li className="flex items-start gap-2 text-[14px] text-slate-700 font-medium">
                         <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
                           <Users size={16} strokeWidth={2.5} />
                         </div>
@@ -223,7 +223,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       </li>
 
                       {/* BENEFICIO 3: EL RESULTADO (EL TIEMPO) */}
-                      <li className="flex items-start gap-4 text-[14px] text-slate-700 font-medium">
+                      <li className="flex items-start gap-2 text-[14px] text-slate-700 font-medium">
                         <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
                           <Clock size={16} strokeWidth={2.5} />
                         </div>
@@ -240,7 +240,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                       Quiero obtener acceso <span>→</span>
                     </button>
                     
-                    <div className="text-center text-xs text-slate-500 mt-6 font-medium flex items-center justify-center gap-2.5">
+                    <div className="text-center text-xs text-slate-500 mt-4 font-medium flex items-center justify-center gap-2.5">
                       <span className="flex -space-x-2">
                         <div className="w-7 h-7 rounded-full ring-2 ring-white z-30 bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center shadow-sm">SM</div>
                         <div className="w-7 h-7 rounded-full ring-2 ring-white z-20 bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shadow-sm">JP</div>

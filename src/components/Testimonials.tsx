@@ -10,8 +10,8 @@ export function TestimonialSection() {
         
         {/* Encabezado más pequeño y directo */}
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-sans text-slate-900 tracking-tight leading-tight max-w-2xl mx-auto">
-            Inventarios que se convierten en <span className="text-blue-600 italic">ventaja competitiva.</span>
+          <h2 className="text-2xl md:text-3xl font-sans text-slate-900 tracking-tight leading-tight max-w-3xl mx-auto">
+            Convierte tu inventario en una <span className="text-blue-600 italic"> ventaja competitiva.</span>
           </h2>
         </div>
 
@@ -21,7 +21,7 @@ export function TestimonialSection() {
           {/* TARJETA 1 */}
           <div className="min-w-[85vw] md:min-w-0 snap-center group relative bg-white border border-slate-200/50 p-6 md:p-8 rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-all duration-500">
             
-            <div className="flex justify-between items-start mb-6">
+            <div className="flex justify-between items-start mb-3">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={12} className="fill-blue-600 text-blue-600" />
@@ -30,11 +30,11 @@ export function TestimonialSection() {
               <Quote className="text-slate-200" size={20} strokeWidth={1.5} />
             </div>
             
-            <p className="text-slate-600 text-[15px] md:text-[16px] leading-relaxed mb-8 font-sans italic">
+            <p className="text-slate-600 text-[15px] md:text-[16px] leading-relaxed mb-1 font-sans italic">
               "Cambiamos a un ERP hace años, pero solo nos servía para facturar. <strong>Monitorear la rotación real cambió todo.</strong> Ahora mi equipo confía en lo que tenemos en stock."
             </p>
             
-            <div className="flex items-center gap-4 pt-6 border-t border-slate-50">
+            <div className="flex items-center gap-4 pt-2 border-t border-slate-50">
               <div className="w-11 h-11 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-md">
                 MR
               </div>
@@ -50,7 +50,7 @@ export function TestimonialSection() {
           {/* TARJETA 2 */}
           <div className="min-w-[85vw] md:min-w-0 snap-center group relative bg-white border border-slate-200/50 p-6 md:p-8 rounded-3xl shadow-[0_2px_10px_rgba(0,0,0,0.02)] transition-all duration-500">
             
-            <div className="flex justify-between items-start mb-6">
+            <div className="flex justify-between items-start mb-3">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} size={12} className="fill-blue-600 text-blue-600" />
@@ -59,11 +59,11 @@ export function TestimonialSection() {
               <Quote className="text-slate-200" size={20} strokeWidth={1.5} />
             </div>
             
-            <p className="text-slate-600 text-[15px] md:text-[16px] leading-relaxed mb-8 font-sans italic">
+            <p className="text-slate-600 text-[15px] md:text-[16px] leading-relaxed mb-1 font-sans italic">
               "Ya no estamos en el negocio de la acumulación, sino de la rotación. Saber mis días de inventario me permite <strong>negociar mejores precios con proveedores.</strong>"
             </p>
             
-            <div className="flex items-center gap-4 pt-6 border-t border-slate-50">
+            <div className="flex items-center gap-4 pt-2 border-t border-slate-50">
               <div className="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
                 CS
               </div>

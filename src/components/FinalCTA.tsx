@@ -28,8 +28,8 @@ export function FinalCTA() {
               <span className="text-blue-400 italic font-serif">Empieza a dirigir.</span>
             </h2>
 
-            <p className="text-slate-400 text-sm md:text-base mb-8 font-medium leading-relaxed">
-              Únete a los <strong className="text-white font-bold">2,300+ dueños</strong> que ya transformaron su inventario en una ventaja real.
+            <p className="text-slate-400 text-sm md:text-base mb-6 font-medium leading-relaxed">
+              Únete a los <strong className="text-white font-bold">2,300+ dueños</strong> que ya transforman su inventario en una ventaja.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -43,7 +43,8 @@ export function FinalCTA() {
             </div>
 
             <p className="mt-6 text-slate-500 text-[10px] font-bold uppercase tracking-widest opacity-60">
-              Sin contratos. Claridad absoluta para tu ferretería.
+              Pausa o cancela el servicio cuando quieras
+              <br/>Asesorías ilimitadas
             </p>
           </div>
         </div>
