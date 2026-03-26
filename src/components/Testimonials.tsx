@@ -41,7 +41,7 @@ export function TestimonialSection() {
               <div>
                 <h4 className="font-bold text-slate-900 text-[14px]">Martín Rojas</h4>
                 <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5">
-                  Ferretería El Constructor <span className="w-1 h-1 rounded-full bg-slate-300" /> 🇵🇪 Perú
+                  Ferretería El Clavo <span className="w-1 h-1 rounded-full bg-slate-300" /> 🇵🇪 Perú
                 </p>
               </div>
             </div>

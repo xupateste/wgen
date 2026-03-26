@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Paperclip, ArrowUp, Zap, X, Loader2, Users, PackageSearch, ShoppingCart, BarChart3, PackageX, TrendingUp, FileText, Receipt, CheckCircle2 } from "lucide-react";
+import { Paperclip, Sparkles, ArrowUp, Zap, X, Loader2, Users, PackageSearch, ShoppingCart, BarChart3, PackageX, TrendingUp, FileText, Receipt, CheckCircle2 } from "lucide-react";
 import { submitWaitlist } from "./actions";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css"; 
@@ -29,10 +29,10 @@ export default function Home() {
   const [phraseIndex, setPhraseIndex] = useState(0);
 
   const phrases = [
-    "Quiero analizar mis productos sin rotación...",
-    "Quiero generar un plan de compras optimizado...",
-    "Quiero entender mi rentabilidad por marca...",
-    "Quiero auditar el capital atrapado en stock...",
+    "Analizar mis productos sin rotación...",
+    "Generar un plan de compras optimizado...",
+    "Entender mi rentabilidad por marca...",
+    "Auditar el capital atrapado en stock...",
   ];
 
   useEffect(() => {
@@ -129,28 +129,42 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8faff] text-slate-900 font-sans flex flex-col">
+    <div className="min-h-screen bg-gradient-to-t from-[#cbddfd] to-white text-slate-900 font-sans flex flex-col">
       
       {/* NAV */}
       <Navbar />
 
       {/* HERO SECTION */}
       {/* pt-24 en móvil y pt-28 en PC para subir el contenido. pb-16 para no dejar tanto espacio abajo */}
-      <main className="flex-grow flex flex-col items-center justify-center px-4 pt-24 md:pt-38 pb-16 text-center max-w-4xl mx-auto w-full relative z-10">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 pt-26 md:pt-20 md:pt-38 pb-14 text-center max-w-4xl mx-auto w-full relative z-10">
         
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-blue-100 bg-white text-blue-600 text-[11px] font-bold tracking-widest uppercase mb-6 md:mb-8 shadow-sm">
-          {/*<Zap size={14} fill="currentColor" />*/}
-          <span>Gestión IA + Asesorías Ilimitadas</span>
+        {/*<span className="text-blue-600 text-[12px] md:text-[14px] pt-4 font-bold tracking-widest uppercase mb-3 md:mb-4">
+          Presentamos Genio PRO
+        </span>*/}
+
+        <div className="flex flex-col items-center gap-4 mb-4 md:mb-6">
+          {/* Caja del ícono (Borde sutil y sombra suave) */}
+          <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white rounded-[16px] border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] rotate-12">
+            {/* ÍCONO ACTUALIZADO: -rotate-15 para giro leve y drop-shadow azul para efecto de brillo */}
+            <Sparkles 
+              className="text-blue-600 w-6 h-6 md:w-7 md:h-7" 
+              strokeWidth={1.5} 
+            />
+          </div>
+          {/* Texto del badge */}
+          <span className="text-blue-600 text-[11px] md:text-[13px] font-bold tracking-[0.2em] uppercase">
+            Presentamos <strong>Genio PRO</strong>
+          </span>
         </div>
 
         {/* Cambiamos font-extrabold a font-bold, y text-[64px] a text-[56px] para mayor elegancia */}
-        <h1 className="text-3xl md:text-[60px] tracking-tight font-medium text-slate-900 mb-5 md:mb-6 leading-[1.1] md:leading-[1.15]">
+        <h1 className="text-3xl md:text-[60px] tracking-tight font-medium text-slate-900 mb-3 md:mb-6 leading-[1.1] md:leading-[1.15]">
           Dirigir tu ferretería como un experto {' '}
           <span className="text-blue-600">nunca fue tan sencillo</span>
         </h1>
 
         {/* Margen mb-8 (antes 12) y quitamos font-medium para aligerar la lectura */}
-        <p className="text-slate-500 tracking-tight max-w-[55ch] md:text-[18px] mb-6 md:mb-8 max-w-2xl font-semibold px-2 leading-[1.7]">
+        <p className="text-slate-500 tracking-tight max-w-[55ch] md:text-[18px] mb-4 md:mb-6 max-w-2xl font-semibold px-2 leading-[1.7]">
           Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu operación en un solo lugar. Obtén el respaldo de un analista experto <strong>dedicado a tu ferreteria</strong>.
         </p>
 

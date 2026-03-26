@@ -14,7 +14,7 @@ export default async function BlogIndex() {
       <Navbar />
 
       {/* HEADER DEL BLOG */}
-      <header className="py-16 text-center px-4">
+      <header className="pt-42 pb-12 text-center px-4">
         <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 mb-4">
           Blog
         </h1>

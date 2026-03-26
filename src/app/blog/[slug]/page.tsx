@@ -29,7 +29,7 @@ export default async function PostPage({ params }: Props) {
       <Navbar />
 
       {/* CABECERA DEL POST (Abarca todo el ancho) */}
-      <header className="max-w-6xl mx-auto px-6 pt-16 pb-12">
+      <header className="pt-24 md:pt-38 pb-12 max-w-6xl mx-auto px-6">
         <Link href="/blog" className="text-slate-500 text-sm font-semibold hover:text-blue-600 mb-6 flex items-center gap-2 transition-colors">
           &larr; Todos los artículos
         </Link>

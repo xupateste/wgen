@@ -5,7 +5,7 @@ import Link from "next/link";
 import { 
   Menu, X, ChevronDown, Zap, Microscope, FileText, 
   ShoppingBag, Calculator, RefreshCw, CheckSquare, 
-  LayoutGrid, GraduationCap 
+  LayoutGrid, GraduationCap, Brain 
 } from "lucide-react";
 import { useWaitlist } from "./WaitlistProvider";
 
@@ -37,11 +37,11 @@ export default function Navbar() {
         ? "py-3 bg-white border-b border-slate-200/50 shadow-sm" 
         : "py-5 bg-transparent"
     }`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto pl-6 pr-2 flex items-center justify-between">
         
         {/* LOGO */}
         <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 group cursor-pointer outline-none">
-          <div className="h-12 w-34 md:h-14 md:w-50 bg-[url('/logo.png')] bg-contain bg-no-repeat bg-left transition-transform group-hover:scale-[1.02]" />
+          <div className="h-12 w-40 md:h-14 md:w-50 bg-[url('/logo.png')] bg-contain bg-no-repeat bg-left transition-transform group-hover:scale-[1.02]" />
           <span className="sr-only">ferreteros.app</span>
         </Link>
 
@@ -57,11 +57,11 @@ export default function Navbar() {
                 {/* Genio PRO es interno (#) */}
                 <ServiceItem 
                   href="#" 
-                  onClick={handleInternalNav}
+                  onClick={() => openModal("Navbar CTA")}
                   icon={<Zap size={18} className="text-blue-600" />} 
-                  title="Genio PRO" desc="Gestión IA + Asesoría Experta" badge="Core" 
+                  title="Genio PRO" desc="Gestión IA + Asesoría Experta" badge="NEW" 
                 />
-                <ServiceItem href="https://analisis.ferreteros.app" icon={<Microscope size={18} className="text-slate-400" />} title="Laboratorio de Datos" desc="Auditoría de Inventarios" />
+                <ServiceItem href="https://laboratorio.ferreteros.app" icon={<Microscope size={18} className="text-slate-400" />} title="Laboratorio de Datos" desc="Auditoría de Inventarios" />
                 <ServiceItem href="https://facturacion.ferreteros.app" icon={<FileText size={18} className="text-slate-400" />} title="Facturación Electrónica" desc="Conexión Directa SUNAT" />
                 <ServiceItem href="https://catalogos.ferreteros.app" icon={<ShoppingBag size={18} className="text-slate-400" />} title="Catálogo Digital" desc="Ventas por WhatsApp" />
               </div>
@@ -74,16 +74,17 @@ export default function Navbar() {
             </button>
             <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <div className="bg-white border border-slate-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] rounded-[24px] p-4 w-72">
-                <ServiceItem href="https://analisis.ferreteros.app/stock-muerto" icon={<Calculator size={18} className="text-slate-400" />} title="Stock Muerto" desc="Calcula tu capital parado" />
-                <ServiceItem href="https://analisis.ferreteros.app/rotacion-de-stock" icon={<RefreshCw size={18} className="text-slate-400" />} title="Rotación" desc="Días de inventario ideal" />
+                <ServiceItem href="https://laboratorio.ferreteros.app/stock-muerto" icon={<Calculator size={18} className="text-slate-400" />} title="Stock Muerto" desc="Calcula tu capital parado" />
+                <ServiceItem href="https://laboratorio.ferreteros.app/rotacion-de-stock" icon={<RefreshCw size={18} className="text-slate-400" />} title="Rotación" desc="Días de inventario ideal" />
                 {/*<ServiceItem href="/herramientas/plan-compra" icon={<CheckSquare size={18} className="text-slate-400" />} title="Plan de Compra" desc="Optimiza tus pedidos" />*/}
-                <ServiceItem href="https://analisis.ferreteros.app/analisis-abc" icon={<LayoutGrid size={18} className="text-slate-400" />} title="Análisis ABC" desc="Clasifica tu mercadería" />
+                <ServiceItem href="https://laboratorio.ferreteros.app/analisis-abc" icon={<LayoutGrid size={18} className="text-slate-400" />} title="Análisis ABC" desc="Clasifica tu mercadería" />
+                <ServiceItem href="https://laboratorio.ferreteros.app/" icon={<Brain size={18} className="text-slate-400" />} title="Abrir Laboratorio (Gratis)" desc="Accede a la suite completa de diagnósticos y auditorías" />
               </div>
             </div>
           </div>
 
-          <Link href="https://analisis.ferreteros.app/manifiesto" className="text-[11px] font-bold text-slate-600 hover:text-blue-600 uppercase tracking-widest transition-colors">
-            Nuestro Manifiesto 🏳
+          <Link href="/manifiesto" className="text-[11px] font-bold text-slate-600 hover:text-blue-600 uppercase tracking-widest transition-colors">
+            Manifiesto
           </Link>
         </div>
 
@@ -111,27 +112,27 @@ export default function Navbar() {
           <div>
             <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-6">Servicios</h4>
             <div className="grid grid-cols-1 gap-3">
-              <MobileItem href="#" onClick={handleInternalNav} icon={<Zap size={20} className="text-blue-600" />} title="Genio PRO" />
-              <MobileItem href="https://analisis.ferreteros.app" icon={<Microscope size={20} className="text-slate-400" />} title="Laboratorio de Datos" />
+              <MobileItem href="#" onClick={() => openModal("Navbar CTA")} icon={<Zap size={20} className="text-blue-600" />} title="Genio PRO" />
+              <MobileItem href="https://laboratorio.ferreteros.app" icon={<Microscope size={20} className="text-slate-400" />} title="Laboratorio de Datos" />
               <MobileItem href="https://facturacion.ferreteros.app" icon={<FileText size={20} className="text-slate-400" />} title="Facturación Electrónica" />
-              <MobileItem href="https://catalogo.ferreteros.app" icon={<ShoppingBag size={20} className="text-slate-400" />} title="Catálogo Digital" />
+              <MobileItem href="https://catalogos.ferreteros.app" icon={<ShoppingBag size={20} className="text-slate-400" />} title="Catálogo Digital" />
             </div>
           </div>
 
           <div>
             <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-6">Herramientas Gratis</h4>
             <div className="grid grid-cols-1 gap-3">
-              <MobileItem href="https://analisis.ferreteros.app/stock-muerto" icon={<Calculator size={20} className="text-slate-400" />} title="Calculadora de Stock" />
-              <MobileItem href="https://analisis.ferreteros.app/rotacion-de-stock" icon={<RefreshCw size={20} className="text-slate-400" />} title="Análisis de Rotación" />
-              <MobileItem href="https://analisis.ferreteros.app/analisis-abc" icon={<LayoutGrid size={18} className="text-slate-400" />} title="Análisis ABC" />
-              <MobileItem href="https://laboratorio.ferreteros.app" icon={<GraduationCap size={20} className="text-slate-400" />} title="Academia Ferretera" />
+              <MobileItem href="https://laboratorio.ferreteros.app/stock-muerto" icon={<Calculator size={20} className="text-slate-400" />} title="Calculadora de Stock" />
+              <MobileItem href="https://laboratorio.ferreteros.app/rotacion-de-stock" icon={<RefreshCw size={20} className="text-slate-400" />} title="Análisis de Rotación" />
+              <MobileItem href="https://laboratorio.ferreteros.app/analisis-abc" icon={<LayoutGrid size={18} className="text-slate-400" />} title="Análisis ABC" />
+              <MobileItem href="https://laboratorio.ferreteros.app" icon={<Brain size={20} className="text-slate-400" />} title="Abrir Laboratorio (Gratis)" />
             </div>
           </div>
 
           <div>
-            <Link href="https://analisis.ferreteros.app/manifiesto" className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-6">Sobre Nosotros</Link>
+            <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-[0.25em] mb-6">Sobre Nosotros</h4>
             <div className="grid grid-cols-1 gap-3">
-              <MobileItem href="https://analisis.ferreteros.app/manifiesto" icon={<Calculator size={20} className="text-slate-400" />} title="Nuestro Manifiesto Ferretero 🏳" />
+              <MobileItem href="/manifiesto" icon={<Calculator size={20} className="text-slate-400" />} title="Nuestro Manifiesto" />
             </div>
           </div>
 
