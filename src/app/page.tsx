@@ -142,7 +142,7 @@ export default function Home() {
           Presentamos Genio PRO
         </span>*/}
 
-        <div className="flex flex-col items-center gap-4 mb-4 md:mb-6">
+        <div className="flex flex-col items-center gap-4 mb-2 md:mb-4">
           {/* Caja del ícono (Borde sutil y sombra suave) */}
           <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center bg-white rounded-[16px] border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] rotate-12">
             {/* ÍCONO ACTUALIZADO: -rotate-15 para giro leve y drop-shadow azul para efecto de brillo */}
@@ -158,14 +158,14 @@ export default function Home() {
         </div>
 
         {/* Cambiamos font-extrabold a font-bold, y text-[64px] a text-[56px] para mayor elegancia */}
-        <h1 className="text-3xl md:text-[60px] tracking-tight font-medium text-slate-900 mb-3 md:mb-6 leading-[1.1] md:leading-[1.15]">
+        <h1 className="text-3xl md:text-[60px] tracking-tight font-medium text-slate-900 mb-3 md:mb-5 leading-[1.1] md:leading-[1.15]">
           Dirigir tu ferretería como un experto {' '}
           <span className="text-blue-600">nunca fue tan sencillo</span>
         </h1>
 
         {/* Margen mb-8 (antes 12) y quitamos font-medium para aligerar la lectura */}
         <p className="text-slate-500 tracking-tight max-w-[55ch] md:text-[18px] mb-4 md:mb-6 max-w-2xl font-semibold px-2 leading-[1.7]">
-          Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu operación en un solo lugar. Obtén el respaldo de un analista experto <strong>dedicado a tu ferreteria</strong>.
+          Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu operación en un solo lugar. Obtén la asistencia de un analista experto <strong>dedicado a tu ferreteria</strong>.
         </p>
 
         {/* Borde del chatbox a 1px (border normal) para que sea definido pero no tosco */}
