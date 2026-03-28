@@ -167,8 +167,12 @@ export default function Home() {
 
         {/* Margen mb-8 (antes 12) y quitamos font-medium para aligerar la lectura */}
         <p className="text-slate-500 tracking-tight max-w-[55ch] md:text-[18px] mb-4 md:mb-6 max-w-2xl font-semibold px-2 leading-[1.7]">
-          Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu operación en un solo lugar. Obtén la asistencia de un analista experto <strong>dedicado a tu ferreteria</strong>.
+          {/*Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu operación en un solo lugar. Obtén la asistencia de un analista experto <strong>dedicado a tu ferreteria</strong>.*/}
+          Genio PRO te ayuda a <strong>planificar</strong>, <strong>auditar</strong> y <strong>optimizar</strong> tu operación en un solo lugar. Ten un <strong>analista experto de tu lado</strong> y desata todo el potencial de tu negocio.
         </p>
+        {/*<p className="text-slate-500 tracking-tight max-w-[55ch] md:text-[18px] mb-4 md:mb-6 max-w-2xl font-semibold px-2 leading-[1.7]">
+        Ten un <strong>analista experto</strong> de tu lado que realmente entiende tu negocio
+        </p>*/}
 
         {/* Borde del chatbox a 1px (border normal) para que sea definido pero no tosco */}
         <div className="w-full max-w-2xl relative shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-2xl bg-white border-2 border border-slate-700 p-1 mb-4 md:mb-6 hover:shadow-[0_8px_30px_rgb(37,99,235,0.12)] hover:border-blue-600 transition-all duration-300">

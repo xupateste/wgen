@@ -32,7 +32,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 	// ESTADOS NUEVOS PARA EL QUEUE JUMPING
 	const [queuePos, setQueuePos] = useState(427);
 	const [countdown, setCountdown] = useState(9);
-	const [willRedirect, setWillRedirect] = useState(true);
+	const [willRedirect, setWillRedirect] = useState(false);
 
 	// Genera un número de posición dinámico que crece con los días
 	useEffect(() => {
@@ -279,7 +279,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 									<div className="pb-2 animate-in fade-in slide-in-from-bottom-4 duration-500">
                     
                     <h2 className="text-[20px] md:text-[32px] mt-4 md:mt-1 font-sans font-bold text-slate-900 mb-2 md:mb-3 tracking-tight leading-tight text-center max-w-2xl mx-auto">
-                      <strong className="text-blue-600 font-bold">Recupera 20 horas a la semana</strong> y <br className="hidden md:block"/><strong className="text-blue-600 font-bold">optimiza tu capital</strong>. <br className="block md:hidden"/><strong>Dirige como un experto.</strong>
+                      <strong className="text-blue-600 font-bold">Recupera 20 horas a la semana</strong> <br className="block md:hidden"/> y <br className="hidden md:block"/><strong className="text-blue-600 font-bold">optimiza tu capital</strong>. <br className="block md:hidden"/><strong>Dirige como un experto.</strong>
                     </h2>
 
                     <p className="text-slate-500 text-[11px] md:text-[15px] mb-2 md:mb-4 leading-relaxed font-medium text-center">
@@ -344,60 +344,6 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                     </div>
                   </div>
 
-									// PASO 1 (Se mantiene igual)
-									// <div className="py-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-									//   <h2 className="text-3xl md:text-4xl font-serif text-slate-900 mb-4 tracking-tight leading-tight">
-									//     De ferreteros,<br/> para ferreteros.
-									//   </h2>
-									//   <p className="text-slate-600 text-[14px] mb-4 leading-relaxed font-medium">
-									//     Construimos <strong className="text-blue-600 font-extrabold">Genio</strong> <strong className="text-slate-900 font-extrabold">PRO</strong> para devolverte la confianza y que dirijas tu negocio como un experto.
-									//   </p>
-										
-									//   <div className="bg-slate-50/80 border border-slate-100 rounded-[24px] p-3 mb-5 space-y-4 shadow-sm">
-									//     <li className="flex items-start gap-2 text-[14px] text-slate-700 font-medium">
-									//       <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-									//         <Brain size={16} strokeWidth={2.5} />
-									//       </div>
-									//       <span>
-									//         <strong className="text-slate-900">Inteligencia de Datos:</strong> Auditoría y planificación automática de tu stock.
-									//       </span>
-									//     </li>
-									//     <li className="flex items-start gap-2 text-[14px] text-slate-700 font-medium">
-									//       <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
-									//         <Users size={16} strokeWidth={2.5} />
-									//       </div>
-									//       <span>
-									//         <strong className="text-slate-900">Asesoría Experta:</strong> Ten consultas ilimitadas con un especialista en inventarios ferreteros.
-									//       </span>
-									//     </li>
-									//     <li className="flex items-start gap-2 text-[14px] text-slate-700 font-medium">
-									//       <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
-									//         <Clock size={16} strokeWidth={2.5} />
-									//       </div>
-									//       <span>
-									//         <strong className="text-slate-900">Control Total:</strong> Recupera 20+ horas de trabajo a la semana y elimina compras innecesarias.
-									//       </span>
-									//     </li>
-									//   </div>
-
-									//   <button 
-									//     onClick={() => setStep(2)}
-									//     className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-full shadow-[0_10px_25px_rgba(37,99,235,0.3)] hover:shadow-[0_15px_30px_rgba(37,99,235,0.4)] transition-all active:scale-[0.98] uppercase tracking-widest text-xs flex justify-center items-center gap-2"
-									//   >
-									//     Quiero obtener acceso <span>→</span>
-									//   </button>
-										
-									//   <div className="text-center text-xs text-slate-500 mt-4 font-medium flex items-center justify-center gap-2.5">
-									//     <span className="flex -space-x-2">
-									//       <div className="w-7 h-7 rounded-full ring-2 ring-white z-30 bg-blue-600 text-white text-[10px] font-bold flex items-center justify-center shadow-sm">SM</div>
-									//       <div className="w-7 h-7 rounded-full ring-2 ring-white z-20 bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shadow-sm">JP</div>
-									//       <div className="w-7 h-7 rounded-full ring-2 ring-white z-10 bg-emerald-500 text-white text-[10px] font-bold flex items-center justify-center shadow-sm">CA</div>
-									//     </span>
-									//     <span>
-									//       Únete a los más de <strong className="font-bold text-slate-700">2k ferreteros.</strong>
-									//     </span>
-									//   </div>
-									// </div>
 								) : (
 									// PASO 2 (Se mantiene igual)
 									<div className="py-2 animate-in fade-in slide-in-from-right-8 duration-500">
