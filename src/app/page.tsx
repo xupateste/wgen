@@ -29,10 +29,12 @@ export default function Home() {
   const [phraseIndex, setPhraseIndex] = useState(0);
 
   const phrases = [
-    "Analizar mis productos sin rotación...",
-    "Generar un plan de compras optimizado...",
-    "Entender mi rentabilidad por marca...",
-    "Auditar el capital atrapado en stock...",
+    "Tengo $5,000 para invertir, ¿en qué categorías rotaré mi dinero más rápido?...",
+    "Dime qué productos tienen más de 3 meses con polvo para rematarlos hoy mismo...",
+    "Analiza mis ventas por turno y detecta posibles fugas o tickets sospechosos...",
+    "Hazme un plan de compra por proveedor que no me llene el almacén de sobra...",
+    "Cuáles son los productos mas importantes de mi negocio y cuales no...",
+    "Proyecta mis ventas para el cierre de mes y dime si llegaré a mis metas..."
   ];
 
   useEffect(() => {
@@ -174,9 +176,10 @@ export default function Home() {
 
             {/* CAPA DE ANIMACIÓN (GHOST TEXT) */}
             {!isFocused && chatInput.length === 0 && (
-              <div className="absolute top-4 left-4 pointer-events-none text-[16px] font-semibold text-slate-400 flex items-center z-0">
-                <span className="ml-1 text-slate-600/70 text-left">{displayText}</span>
-                <span className="w-[2px] h-[1.2em] bg-slate-600/70 ml-0.5 animate-cursor" />
+              <div className="absolute top-4 left-4 right-12 md:right-16 pointer-events-none text-[16px] md:text-base font-semibold z-0 text-left leading-normal">
+                <span className="text-slate-600/70">{displayText}</span>
+                {/* Al usar inline-block y quitar el flex del padre, el cursor acompaña a la última letra incluso si baja de línea */}
+                <span className="inline-block w-[2.5px] h-[1.1em] bg-blue-500/80 ml-[2px] -mb-[2px] animate-cursor rounded-full" />
               </div>
             )}
 
@@ -217,7 +220,7 @@ export default function Home() {
         </div>
 
         {/* Chips de Sugerencias Estratégicos */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-3 text-[11px] md:text-sm font-semibold text-slate-600 max-w-3xl">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-3 text-[11px] md:text-sm font-semibold text-slate-600 max-w-4xl">
           
           {/* CHIP 1: Operaciones/Equipo (Pain: Improvisación de tareas) */}
           <button 
@@ -227,7 +230,7 @@ export default function Home() {
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <Users size={16} strokeWidth={2.5} />
             </div>
-            <span>Establecer plan de trabajo</span>
+            <span>Detectar robo hormiga</span>
           </button>
 
           {/* CHIP 2: Inventario (Pain: Comprar por intuición / Stock muerto) */}
@@ -238,7 +241,7 @@ export default function Home() {
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <PackageSearch size={16} strokeWidth={2.5} />
             </div>
-            <span>Auditar ventas</span>
+            <span>Liquidar stock muerto</span>
           </button>
 
           {/* CHIP 3: Compras (Pain: No saber si reponer u optimizar) */}
@@ -249,7 +252,7 @@ export default function Home() {
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <ShoppingCart size={16} strokeWidth={2.5} />
             </div>
-            <span>Planear compras</span>
+            <span>Optimizar mis compras</span>
           </button>
 
           {/* CHIP 4: Finanzas (Pain: No saber si el negocio es rentable) */}
@@ -260,7 +263,7 @@ export default function Home() {
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <BarChart3 size={16} strokeWidth={2.5} />
             </div>
-            <span>Analizar rentabilidad</span>
+            <span>Proyectar ventas del mes</span>
           </button>
         </div>
 
