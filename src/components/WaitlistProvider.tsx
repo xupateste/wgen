@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { X, Loader2, Zap, Brain, Clock, Users, Trophy, ArrowRight, Check, Sparkles } from "lucide-react";
+import { X, Loader2, Zap, Brain, Clock, Users, Trophy, ArrowRight, Check, Sparkles, Pencil } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { submitWaitlist } from "@/app/actions";
@@ -208,10 +208,25 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 											<Check size={14} strokeWidth={3} /> Registro Exitoso
 										</div>
 
-										<h2 className="text-2xl md:text-3xl font-serif text-slate-900 mb-2 tracking-tight">
+										{/*<h2 className="text-2xl md:text-3xl font-serif text-slate-900 mb-2 tracking-tight">
 											¡Lugar asegurado{submittedName ? `, ${submittedName.split(' ')[0]}` : ''}!
-										</h2>
+										</h2>*/}
 										
+										{/* NOMBRE + BOTÓN EDITAR (La clave del UX) */}
+								    <h2 className="text-2xl md:text-3xl font-serif text-slate-900 mb-2 tracking-tight flex items-center justify-center gap-2">
+								      ¡Lugar asegurado, {submittedName ? submittedName.split(' ')[0].toUpperCase() : 'FERRETERO'}!
+								      <button 
+								        onClick={() => {
+								          setAlreadyRegistered(false);
+								          setStep(2); // Lo mandamos de vuelta al form
+								        }}
+								        className="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all cursor-pointer"
+								        title="Editar mis datos"
+								      >
+								        <Pencil size={16} />
+								      </button>
+								    </h2>
+
 										{/* Posición Dinámica */}
 										<div className="my-6">
 											<p className="text-slate-500 text-sm font-medium mb-1">Tu posición actual en la lista es:</p>
