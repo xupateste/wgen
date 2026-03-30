@@ -194,7 +194,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 							<div className="relative z-10">
 								<button 
 									onClick={closeModal} 
-									className="absolute -top-6 -right-6 z-[60] cursor-pointer text-slate-400 bg-slate-50 hover:bg-slate-200 hover:text-slate-700 p-2.5 rounded-full transition-all shadow-sm border border-slate-100 active:scale-95"
+									className="absolute -top-4 -right-4 z-[60] cursor-pointer text-slate-400 bg-slate-50 hover:bg-slate-200 hover:text-slate-700 p-2.5 rounded-full transition-all shadow-sm border border-slate-100 active:scale-95"
 								>
 									<X size={18} strokeWidth={2.5} />
 								</button>
@@ -343,7 +343,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
                         onClick={() => setStep(2)}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-3.5 md:py-4 rounded-xl md:rounded-2xl shadow-[0_8px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_12px_25px_rgba(37,99,235,0.35)] transition-all active:scale-[0.98] tracking-wide text-[11px] md:text-[13px] flex justify-center items-center gap-1.5"
                       >
-                        OBTENER ACCESO PRIORITARIO <ArrowRight size={16} strokeWidth={3} />
+                        OBTENER ACCESO Y DIAGNÓSTICO INICIAL<ArrowRight size={16} strokeWidth={3} />
                       </button>
                       
                       <div className="text-center text-[11px] md:text-xs text-slate-500 mt-4 font-medium flex items-center justify-center gap-2">
@@ -363,7 +363,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 									// PASO 2 (Se mantiene igual)
 									<div className="py-2 animate-in fade-in slide-in-from-right-8 duration-500">
 										<div className="text-center md:text-left mb-6">
-											<h2 className="text-2xl font-serif text-slate-900 mb-2">Reserva tu lugar.</h2>
+											<h2 className="text-[20px] md:text-[32px] font-serif text-slate-900 mb-2">Reserva tu lugar.</h2>
 											<p className="text-sm text-slate-500 leading-relaxed font-medium">
 												Estamos asignando <strong className="text-slate-900">analistas expertos</strong> por orden de registro. <br className="hidden md:inline-block"/>Asegura tu posición para el <strong className="text-slate-900">diagnóstico de inventario inicial gratuito.</strong>
 											</p>
