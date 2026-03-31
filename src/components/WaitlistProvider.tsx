@@ -365,7 +365,7 @@ export function WaitlistProvider({ children }: { children: ReactNode }) {
 										<div className="text-center md:text-left mb-6">
 											<h2 className="text-[20px] md:text-[32px] font-serif text-slate-900 mb-2">Reserva tu lugar.</h2>
 											<p className="text-sm text-slate-500 leading-relaxed font-medium">
-												Estamos asignando <strong className="text-slate-900">analistas expertos</strong> por orden de registro. <br className="hidden md:inline-block"/>Asegura tu posición para el <strong className="text-slate-900">diagnóstico de inventario inicial gratuito.</strong>
+												Estamos asignando <strong className="text-slate-900">analistas expertos</strong> por orden de registro. <br className="hidden md:inline-block"/>Asegura tu posición para el <strong className="text-slate-900">diagnóstico de inventario inicial (Gratis).</strong>
 											</p>
 										</div>
 										
