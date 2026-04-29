@@ -161,7 +161,7 @@ export default function Home() {
 
         {/* Cambiamos font-extrabold a font-bold, y text-[64px] a text-[56px] para mayor elegancia */}
         <h1 className="text-3xl md:text-[60px] tracking-tight font-medium text-slate-900 mb-3 md:mb-5 leading-[1.1] md:leading-[1.15]">
-          Dirigir tu ferretería como un experto {' '}
+          Dirigir tu inventario como un experto {' '}
           <span className="text-blue-600">nunca fue tan sencillo</span>
         </h1>
 
@@ -266,7 +266,7 @@ export default function Home() {
             <div className="p-1 rounded-md bg-gray-50 text-gray-500 group-hover:bg-gray-100 transition-colors">
               <BarChart3 size={16} strokeWidth={2.5} />
             </div>
-            <span>Proyectar ventas del mes</span>
+            <span>Proyectar compras del año</span>
           </button>
         </div>
 
